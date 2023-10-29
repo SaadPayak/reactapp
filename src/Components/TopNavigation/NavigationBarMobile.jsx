@@ -1,4 +1,8 @@
-import { faMagnifyingGlass, faX } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faMagnifyingGlass,
+  faX,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import NavigationLogo from "./NavigationLogo";
@@ -37,7 +41,12 @@ const NavigationBarMobile = () => {
           >
             <FontAwesomeIcon icon={faMagnifyingGlass} flip="horizontal" />
           </div>
-
+          <div
+            className="mr-6 text-3xl text-gray-500"
+            onClick={() => setIsSearchActivated(true)}
+          >
+            <FontAwesomeIcon icon={faBars} flip="horizontal" />
+          </div>
           <NavigationAvatar />
         </div>
       )}
