@@ -1,9 +1,4 @@
-import {
-  faCancel,
-  faCross,
-  faMagnifyingGlass,
-  faX,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
