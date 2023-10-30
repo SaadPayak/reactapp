@@ -7,9 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import NavigationLogo from "./NavigationLogo";
 import NavigationAvatar from "./NavigationAvatar";
+import { useApplicationManager } from "../../contexts/ApplicationContext";
 
 const NavigationBarMobile = () => {
   const [isSearchActivated, setIsSearchActivated] = useState(false);
+  const { isMobileMenuActive, setIsMobileMenuActive } = useApplicationManager();
   return (
     <>
       {/* JYSEIFY Logo ⬇️ */}
@@ -32,21 +34,33 @@ const NavigationBarMobile = () => {
         </div>
       )}
 
-      {/* Profile Icon ⬇️ */}
+      {/* Profile Section ⬇️ */}
       {!isSearchActivated && (
         <div className=" min-w-[15%] h-12 flex justify-end items-center cursor-pointer">
+          {/* Search Icon ⬇️ */}
           <div
-            className="mr-6 text-3xl text-gray-500"
+            className="mr-6 text-xl text-gray-500"
             onClick={() => setIsSearchActivated(true)}
           >
             <FontAwesomeIcon icon={faMagnifyingGlass} flip="horizontal" />
           </div>
-          <div
-            className="mr-6 text-3xl text-gray-500"
-            onClick={() => setIsSearchActivated(true)}
-          >
-            <FontAwesomeIcon icon={faBars} flip="horizontal" />
-          </div>
+          {/* Menu Icon ⬇️ */}
+          {isMobileMenuActive ? (
+            <div
+              className="mr-6 text-xl text-gray-500"
+              onClick={() => setIsMobileMenuActive(false)}
+            >
+              <FontAwesomeIcon icon={faX} flip="horizontal" />
+            </div>
+          ) : (
+            <div
+              className="mr-6 text-xl text-gray-500"
+              onClick={() => setIsMobileMenuActive(true)}
+            >
+              <FontAwesomeIcon icon={faBars} flip="horizontal" />
+            </div>
+          )}
+
           <NavigationAvatar />
         </div>
       )}

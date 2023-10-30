@@ -7,4 +7,33 @@
 body,
 html {
   overflow-x: hidden;
+  @apply bg-black-main;
+}
+
+/* .menubar-scrollbar::-webkit-scrollbar {
+  display: none;
+} */
+
+/* width */
+::-webkit-scrollbar,
+.menubar-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track,
+.menubar-scrollbar::-webkit-scrollbar-track {
+  @apply bg-black-main;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb,
+.menubar-scrollbar::-webkit-scrollbar-thumbr {
+  @apply bg-black-search-bar;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover,
+.menubar-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-[#1e1e1e];
 }

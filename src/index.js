@@ -4,14 +4,17 @@ import "./index.css";
 import App from "./App";
 import ApplicationRoutes from "./ApplicationRoutes";
 import LayoutMain from "./Components/Layout/LayoutMain";
+import { ApplicationManagerProvider } from "./contexts/ApplicationContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <LayoutMain>
-      <ApplicationRoutes>
-        <App />
-      </ApplicationRoutes>
-    </LayoutMain>
+    <ApplicationManagerProvider>
+      <LayoutMain>
+        <ApplicationRoutes>
+          <App />
+        </ApplicationRoutes>
+      </LayoutMain>
+    </ApplicationManagerProvider>
   </React.StrictMode>
 );
