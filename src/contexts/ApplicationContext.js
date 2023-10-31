@@ -14,7 +14,10 @@ export const useApplicationManager = () => {
 
 export const ApplicationManagerProvider = ({ children }) => {
   // Desktop Options
-  // ---
+  const [fullScreenPopCenter, setFullScreenPopCenter] = useState({
+    isActive: false,
+    Component: null,
+  });
 
   // Mobile Options
   const [isMobileMenuActive, setIsMobileMenuActive] = useState(false);
@@ -22,12 +25,26 @@ export const ApplicationManagerProvider = ({ children }) => {
   // Global Options
   const [selectedMenubarItemId, setSelectedMenubarItemId] = useState(1);
 
+  // Desktop helper functions
+  const activatePopupCenter = (component) => {
+    setFullScreenPopCenter({ isActive: true, component });
+  };
+  const deactivatePopupCenter = () => {
+    setFullScreenPopCenter({ isActive: false, component: null });
+  };
+
   const value = {
+    fullScreenPopCenter,
+    setFullScreenPopCenter,
+
     isMobileMenuActive,
     setIsMobileMenuActive,
 
     selectedMenubarItemId,
     setSelectedMenubarItemId,
+
+    activatePopupCenter,
+    deactivatePopupCenter,
   };
   return (
     <ApplicationManagerContext.Provider value={value}>

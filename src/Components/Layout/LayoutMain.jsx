@@ -4,6 +4,7 @@ import Menubar from "../Menubar/Menubar";
 import MenubarMobile from "../Menubar/Mobile/MenubarMobile";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
 import { PlaylistsProvider } from "../../contexts/PlaylistsContext";
+import FullScreenPopupCenter from "./FullScreenPopupCenter";
 
 const LayoutMain = (props) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 850);
@@ -46,7 +47,7 @@ const ContentHolder = ({ children, isSmallScreen }) => {
       ) : (
         <>
           <Menubar />
-          {/* <CreatePlaylist /> */}
+          <FullScreenPopupCenter />
           <div className="w-[80%] min-h-full absolute right-0 p-5">
             {children}
           </div>

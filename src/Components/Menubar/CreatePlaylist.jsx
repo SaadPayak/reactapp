@@ -1,50 +1,80 @@
-import { faPlus, faRightLong } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
+import { useApplicationManager } from "../../contexts/ApplicationContext";
 import { usePlaylists } from "../../contexts/PlaylistsContext";
 
 const CreatePlaylist = () => {
-  const { isCreatePlaylist, setIsCreatePlaylist } = usePlaylists();
+  const { activatePopupCenter } = useApplicationManager();
   return (
-    <>
-      {!isCreatePlaylist ? (
-        <div
-          onClick={() => setIsCreatePlaylist(true)}
-          className="w-full h-10 mb-3 text-white text-sm overflow-hidden flex justify-center items-center cursor-pointer rounded-md  bg-pink-primary hover:bg-pink-secondary transition-all duration-200 ease-in-out"
-        >
-          <FontAwesomeIcon icon={faPlus} />
-          <h1 className="ml-2 ">Create Playlist</h1>
-        </div>
-      ) : (
-        <PlaylistInfo setIsCreatePlaylist={setIsCreatePlaylist} />
-      )}
-    </>
+    <div
+      onClick={() => activatePopupCenter(<PlaylistInfo />)}
+      className="w-full h-10 mb-3 text-white text-sm overflow-hidden flex justify-center items-center cursor-pointer rounded-md  bg-pink-primary hover:bg-pink-secondary transition-all duration-200 ease-in-out"
+    >
+      <FontAwesomeIcon icon={faPlus} />
+      <h1 className="ml-2 ">Create Playlist</h1>
+    </div>
   );
 };
 
-const PlaylistInfo = ({ setIsCreatePlaylist }) => {
+const PlaylistInfo = () => {
+  const [playlistName, setPlaylistName] = useState("");
+  const [playlistColor, setplaylistColor] = useState("fuchsia-400");
+  const { deactivatePopupCenter } = useApplicationManager();
+  const { addToPlaylist } = usePlaylists();
+  const playlistColors = [
+    "fuchsia-400",
+    "purple-400",
+    "green-400",
+    "yellow-400",
+    "blue-400",
+    "lime-400",
+    "cyan-400",
+    "rose-400",
+  ];
   return (
-    <div className="w-full ">
-      <input
-        placeholder="Playlist name"
-        className="w-full rounded-md text-sm text-gray-200 bg-black-ultra-light outline-none border-none p-3"
-      />
-      <div className="w-full flex mt-4 px-4 justify-evenly flex-wrap">
-        <div className="w-6 h-6 rounded-sm cursor-pointer border-white border-[2px] bg-red-400"></div>
-        <div className="w-6 h-6 rounded-sm cursor-pointer bg-purple-400"></div>
-        <div className="w-6 h-6 rounded-sm cursor-pointer bg-green-400"></div>
-        <div className="w-6 h-6 rounded-sm cursor-pointer bg-yellow-400"></div>
-        <div className="w-6 h-6 rounded-sm cursor-pointer bg-blue-400"></div>
-      </div>
-      <div className="w-full h-10 mt-3 text-white text-sm overflow-hidden flex justify-center items-center cursor-pointer rounded-md  bg-pink-primary hover:bg-pink-secondary transition-all duration-200 ease-in-out">
-        <h1 className="mr-2">Create</h1>
-        <FontAwesomeIcon icon={faRightLong} />
-      </div>
-      <div
-        onClick={() => setIsCreatePlaylist(false)}
-        className="w-full h-7 text-red-500 mb-3 text-sm overflow-hidden flex justify-center items-center cursor-pointer rounded-md transition-all duration-200 ease-in-out"
-      >
-        <h1>Cancle</h1>
+    <div className="">
+      <div className="w-96 px-10 py-20 rounded-lg  bg-black-secondary">
+        <h1 className="ml-1 mb-5 text-gray-200 text-3xl font-semibold">
+          New Playlist
+        </h1>
+        <input
+          placeholder="Playlist name"
+          value={playlistName}
+          onChange={(e) => setPlaylistName(e.target.value)}
+          className="w-full rounded-md text-sm mb-5 text-gray-200 bg-black-ultra-light outline-none border-none p-3"
+        />
+        <div className="mt-4  grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-2 justify-items-center items-center">
+          {playlistColors.map((color) => {
+            let tailwindClass = `w-6 h-6 rounded-sm cursor-pointer mb-3 bg-${color}`;
+            if (color === playlistColor) {
+              tailwindClass += " border-white border-[2px] ";
+            }
+            return (
+              <div
+                className={tailwindClass}
+                onClick={() => setplaylistColor(color)}
+              ></div>
+            );
+          })}
+        </div>
+        <div
+          className="w-full h-10 my-7 text-white text-sm overflow-hidden flex justify-center items-center cursor-pointer rounded-md  bg-pink-primary hover:bg-pink-secondary transition-all duration-200 ease-in-out"
+          onClick={() => {
+            addToPlaylist(playlistName, playlistColor);
+
+            deactivatePopupCenter();
+          }}
+        >
+          <h1 className="mr-2">Create</h1>
+          <FontAwesomeIcon icon={faPlus} />
+        </div>
+        <div
+          onClick={deactivatePopupCenter}
+          className="w-full h-7 text-red-500 underline mt-2 text-sm overflow-hidden flex justify-center items-center cursor-pointer rounded-md transition-all duration-200 ease-in-out"
+        >
+          <h1>Cancle</h1>
+        </div>
       </div>
     </div>
   );

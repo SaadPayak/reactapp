@@ -1,21 +1,20 @@
 import React from "react";
-import { playlists } from "../../data/Menubar/MenubarData";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
+import { usePlaylists } from "../../contexts/PlaylistsContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CreatePlaylist from "./CreatePlaylist";
 
 const Playlists = () => {
   const { selectedMenubarItemId, setSelectedMenubarItemId } =
     useApplicationManager();
+  const { playlists } = usePlaylists();
 
   return (
     <div className="mt-5">
-      <h1 className="mb-3 text-xs font-bold text-gray-500">
-        {playlists.category}
-      </h1>
+      <h1 className="mb-3 text-xs font-bold text-gray-500">YOUR PLAYLISTS</h1>
       <AnimatePresence mode="wait">
-        {playlists.items.map((item) => {
+        {playlists.map((item) => {
           const itemVariants = {
             hidden: { opacity: 0, x: -10 * item.id },
             visible: { opacity: 1, x: 0 },
@@ -45,6 +44,7 @@ const Playlists = () => {
               initial="hidden"
               animate="visible"
               exit="hidden"
+              key={item.id}
               onClick={() => {
                 setSelectedMenubarItemId(item.id);
               }}
