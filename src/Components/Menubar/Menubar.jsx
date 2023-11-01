@@ -4,6 +4,7 @@ import { MenubarItem } from "./MenubarItem";
 import { menubarItems } from "../../data/Menubar/MenubarData";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
 import Playlists from "./Playlists";
+import Copyright from "./Copyright";
 
 const Menubar = () => {
   const { selectedMenubarItemId, setSelectedMenubarItemId } =
@@ -43,6 +44,7 @@ const Menubar = () => {
           );
         })}
         <Playlists />
+        <Copyright />
       </div>
     </div>
   );

@@ -44,7 +44,7 @@ export const MenubarItem = ({
       <motion.div className={iconTailwind}>
         <FontAwesomeIcon icon={icon} flip="horizontal" />
       </motion.div>
-      <motion.div className="relative h-full w-[80%] flex justify-start items-center">
+      <motion.div className="relative h-full text-ellipsis w-[80%] flex justify-start items-center">
         <h1>{title}</h1>
       </motion.div>
     </motion.div>
