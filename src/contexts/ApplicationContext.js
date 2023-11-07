@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const ApplicationManagerContext = createContext();
 
@@ -24,6 +24,19 @@ export const ApplicationManagerProvider = ({ children }) => {
 
   // Global Options
   const [selectedMenubarItemId, setSelectedMenubarItemId] = useState(1);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 850);
+  // When Menu opened in mobile and then if we switch to desktop, then going back to mobile still shows that menu open. RESET MOBILE STATES
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 850);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   // Desktop helper functions
   const activatePopupCenter = (component) => {
@@ -42,6 +55,7 @@ export const ApplicationManagerProvider = ({ children }) => {
 
     selectedMenubarItemId,
     setSelectedMenubarItemId,
+    isSmallScreen,
 
     activatePopupCenter,
     deactivatePopupCenter,

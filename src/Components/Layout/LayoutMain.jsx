@@ -5,6 +5,8 @@ import MenubarMobile from "../Menubar/Mobile/MenubarMobile";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
 import { PlaylistsProvider } from "../../contexts/PlaylistsContext";
 import FullScreenPopupCenter from "./FullScreenPopupCenter";
+import Player from "../Player/Player";
+// import PlayerMobile from "../Player/mobile/PlayerMobile";
 
 const LayoutMain = (props) => {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 850);
@@ -23,7 +25,10 @@ const LayoutMain = (props) => {
 
   return (
     <PlaylistsProvider>
-      <div className="bg-black-main w-screen min-h-screen font-noto">
+      <div
+        className="bg-black-main w-screen max-h-screen overflow-y-scroll
+       font-noto"
+      >
         <TopNavigation />
         <ContentHolder isSmallScreen={isSmallScreen}>
           {props.children}
@@ -36,7 +41,7 @@ const LayoutMain = (props) => {
 const ContentHolder = ({ children, isSmallScreen }) => {
   const { isMobileMenuActive } = useApplicationManager();
   return (
-    <div className="w-full min-h-screen relative overflow-hidden mt-[72px] flex">
+    <div className="w-full min-h-screen relative  mt-[72px] flex">
       {isSmallScreen ? (
         <>
           {isMobileMenuActive && <MenubarMobile />}
@@ -48,11 +53,12 @@ const ContentHolder = ({ children, isSmallScreen }) => {
         <>
           <Menubar />
           <FullScreenPopupCenter />
-          <div className="w-[80%] min-h-full absolute right-0 p-5">
+          <div className="w-[80%] min-h-full absolute right-0 p-5 px-10">
             {children}
           </div>
         </>
       )}
+      <Player isSmallScreen={isSmallScreen} />
     </div>
   );
 };

@@ -11,10 +11,10 @@ import {
 
 export const menubarItems = [
   {
-    category: "FOR YOU",
+    category: "YOUR FEED",
     items: [
-      { icon: faChartSimple, title: "Top 100", id: 1 },
-      { icon: faBolt, title: "Recommended", id: 2 },
+      { icon: faBolt, title: "For You", id: 1 },
+      { icon: faChartSimple, title: "Top 100", id: 2 },
       { icon: faSliders, title: "Mixes", id: 3 },
     ],
   },
