@@ -1,24 +1,34 @@
 import React from "react";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisVertical, faPlay } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEllipsisVertical,
+  faPause,
+  faPlay,
+} from "@fortawesome/free-solid-svg-icons";
+import { usePlayer } from "../../contexts/PlayerContext";
 
-const SongOption = ({ imageName, songName, songLength, uploadDate }) => {
+const SongOption = ({
+  imagePath,
+  songName,
+  songLength,
+  uploadDate,
+  songId,
+}) => {
   const { isSmallScreen } = useApplicationManager();
   return (
     <div className=" min-w-[200px] mt-4 overflow-hidden border-b-[1px] border-black-secondary hover:bg-black-secondary hover:rounded-md  cursor-pointer transition-all duration-150 ease-in-out">
       <div className="min-w-full  p-2 flex items-center">
-        <SongImage imageName={imageName} />
+        <SongImage imagePath={imagePath} />
         <SongName songName={songName} songLength={songLength} />
         <SongUploadDate uploadDate={uploadDate} />
-        <SongActions isSmallScreen={isSmallScreen} />
+        <SongActions songId={songId} isSmallScreen={isSmallScreen} />
       </div>
     </div>
   );
 };
 
-const SongImage = ({ imageName }) => {
-  const imagePath = `assets/images/songs/song-option/${imageName}`;
+const SongImage = ({ imagePath }) => {
   return (
     <div className="min-w-[56px] h-14 mr-4 bg-black-secondary rounded-md overflow-hidden relative">
       <img
@@ -47,12 +57,21 @@ const SongUploadDate = ({ uploadDate }) => {
   );
 };
 
-const SongActions = ({ isSmallScreen }) => {
+const SongActions = ({ isSmallScreen, songId }) => {
+  const { currentSong, isPlaying, setIsPlaying } = usePlayer();
+  console.log(songId === currentSong?.songId);
   if (isSmallScreen) {
     return (
       <div className="min-w-[40%] justify-end  h-14 mr-2 sm:min-w-[20%] flex items-center sm:justify-evenly rounded-md">
         <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
-          <FontAwesomeIcon icon={faPlay} />
+          {currentSong?.songId === songId && isPlaying ? (
+            <FontAwesomeIcon
+              icon={faPause}
+              onClick={() => setIsPlaying(false)}
+            />
+          ) : (
+            <FontAwesomeIcon icon={faPlay} onClick={() => setIsPlaying(true)} />
+          )}
         </div>
         <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
           <FontAwesomeIcon icon={faEllipsisVertical} />
@@ -63,7 +82,11 @@ const SongActions = ({ isSmallScreen }) => {
   return (
     <div className="min-w-[25%] h-14 mr-2 flex items-center justify-evenly rounded-md ">
       <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
-        <FontAwesomeIcon icon={faPlay} />
+        {currentSong?.songId === songId && isPlaying ? (
+          <FontAwesomeIcon icon={faPause} onClick={() => setIsPlaying(false)} />
+        ) : (
+          <FontAwesomeIcon icon={faPlay} onClick={() => setIsPlaying(true)} />
+        )}
       </div>
       <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
         <FontAwesomeIcon icon={faEllipsisVertical} />

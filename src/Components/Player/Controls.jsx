@@ -5,7 +5,8 @@ import {
   faPlay,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
+import { usePlayer } from "../../contexts/PlayerContext";
 
 const Controls = ({
   audioRef,
@@ -15,7 +16,7 @@ const Controls = ({
   playNextSong,
   playPreviousSong,
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const { isPlaying, setIsPlaying } = usePlayer();
   const playAnimationRef = useRef();
 
   const repeat = useCallback(() => {
