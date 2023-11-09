@@ -96,14 +96,6 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
               }}
             />
           )}
-          {/* {currentSong?.songId === songId && isPlaying ? (
-            <FontAwesomeIcon
-              icon={faPause}
-              onClick={() => setIsPlaying(false)}
-            />
-          ) : (
-            <FontAwesomeIcon icon={faPlay} onClick={() => setIsPlaying(true)} />
-          )} */}
         </div>
         <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
           <FontAwesomeIcon icon={faEllipsisVertical} />
