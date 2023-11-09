@@ -1,11 +1,7 @@
 import React from "react";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEllipsisVertical,
-  faPause,
-  faPlay,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { usePlayer } from "../../contexts/PlayerContext";
 
 const SongOption = ({
@@ -70,70 +66,78 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
   if (isSmallScreen) {
     return (
       <div className="min-w-[40%] justify-end  h-14 mr-2 sm:min-w-[20%] flex items-center sm:justify-evenly rounded-md">
-        <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
-          {currentSong?.songId === songId ? (
-            isPlaying ? (
-              <FontAwesomeIcon
-                icon={faPause}
-                onClick={() => {
-                  setIsPlaying(false);
-                }}
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={faPlay}
-                onClick={() => {
-                  setIsPlaying(true);
-                }}
-              />
-            )
+        {currentSong?.songId === songId ? (
+          isPlaying ? (
+            <div
+              className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+              onClick={() => {
+                setIsPlaying(false);
+              }}
+            >
+              <FontAwesomeIcon icon={faPause} />
+            </div>
           ) : (
-            <FontAwesomeIcon
-              icon={faPlay}
+            <div
+              className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
               onClick={() => {
                 setIsPlaying(true);
-                singleSongPlayButtonHandler(libraryName, index);
               }}
-            />
-          )}
-        </div>
+            >
+              <FontAwesomeIcon icon={faPlay} />
+            </div>
+          )
+        ) : (
+          <div
+            className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+            onClick={() => {
+              setIsPlaying(true);
+              singleSongPlayButtonHandler(libraryName, index);
+            }}
+          >
+            <FontAwesomeIcon icon={faPlay} />
+          </div>
+        )}
         <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
-          <FontAwesomeIcon icon={faEllipsisVertical} />
+          <FontAwesomeIcon icon={faHeart} />
         </div>
       </div>
     );
   }
   return (
     <div className="min-w-[25%] h-14 mr-2 flex items-center justify-evenly rounded-md ">
-      <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
-        {currentSong?.songId === songId ? (
-          isPlaying ? (
-            <FontAwesomeIcon
-              icon={faPause}
-              onClick={() => {
-                setIsPlaying(false);
-              }}
-            />
-          ) : (
-            <FontAwesomeIcon
-              icon={faPlay}
-              onClick={() => {
-                setIsPlaying(true);
-              }}
-            />
-          )
+      {currentSong?.songId === songId ? (
+        isPlaying ? (
+          <div
+            className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+            onClick={() => {
+              setIsPlaying(false);
+            }}
+          >
+            <FontAwesomeIcon icon={faPause} />
+          </div>
         ) : (
-          <FontAwesomeIcon
-            icon={faPlay}
+          <div
+            className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
             onClick={() => {
               setIsPlaying(true);
-              singleSongPlayButtonHandler(libraryName, index);
             }}
-          />
-        )}
-      </div>
+          >
+            <FontAwesomeIcon icon={faPlay} />
+          </div>
+        )
+      ) : (
+        <div
+          className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+          onClick={() => {
+            setIsPlaying(true);
+            singleSongPlayButtonHandler(libraryName, index);
+          }}
+        >
+          <FontAwesomeIcon icon={faPlay} />
+        </div>
+      )}
       <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
-        <FontAwesomeIcon icon={faEllipsisVertical} />
+        <FontAwesomeIcon icon={faHeart} />
       </div>
     </div>
   );

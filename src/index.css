@@ -10,9 +10,9 @@ html {
   @apply bg-black-main;
 }
 
-/* .menubar-scrollbar::-webkit-scrollbar {
+.scrollbar-hidden::-webkit-scrollbar {
   display: none;
-} */
+}
 
 /* width */
 ::-webkit-scrollbar,

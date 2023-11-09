@@ -1,5 +1,7 @@
 import React from "react";
 import Controls from "./Controls";
+import { useApplicationManager } from "../../contexts/ApplicationContext";
+import SongDescription from "../Reusables/SongDescription";
 
 const DisplayTrack = ({
   currentSong,
@@ -11,14 +13,20 @@ const DisplayTrack = ({
   playNextSong,
   playPreviousSong,
 }) => {
+  const { activatePopupCenter } = useApplicationManager();
   const onLoadedMetadata = () => {
     const seconds = audioRef.current.duration;
     setDuration(seconds);
     progressBarRef.current.max = seconds;
   };
   return (
-    <div className=" py-3 flex justify-between items-center">
-      <div className="flex ">
+    <div className=" py-3 flex justify-between items-center cursor-pointer">
+      <div
+        className="flex"
+        onClick={() => {
+          activatePopupCenter(<SongDescription />);
+        }}
+      >
         <div className="w-[43px] h-[43px]  rounded-md overflow-hidden relative">
           <img
             src={currentSong?.coverImage}
