@@ -35,7 +35,7 @@ const Player = ({ isSmallScreen }) => {
   };
 
   let playerTailwind =
-    "h-24 fixed text-white bg-black-secondary right-0 bottom-0 px-6";
+    "h-24 fixed text-white bg-black-secondary right-0 bottom-0 px-6 z-[1000]";
   if (isSmallScreen) {
     playerTailwind += " w-[100%]";
   } else {

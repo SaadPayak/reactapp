@@ -27,7 +27,7 @@ const LayoutMain = (props) => {
     <PlaylistsProvider>
       <div
         className="bg-black-main w-screen max-h-screen overflow-y-scroll
-       font-noto"
+       font-noto "
       >
         <TopNavigation />
         <ContentHolder isSmallScreen={isSmallScreen}>
@@ -41,11 +41,11 @@ const LayoutMain = (props) => {
 const ContentHolder = ({ children, isSmallScreen }) => {
   const { isMobileMenuActive } = useApplicationManager();
   return (
-    <div className="w-full min-h-screen relative  mt-[72px] flex">
+    <div className="w-full min-h-screen relative  mt-[72px] flex ">
       {isSmallScreen ? (
         <>
           {isMobileMenuActive && <MenubarMobile />}
-          <div className="w-[100%] min-h-full absolute right-0 p-5">
+          <div className="w-[100%] min-h-full absolute right-0 p-5 pb-32">
             {children}
           </div>
         </>
@@ -53,7 +53,7 @@ const ContentHolder = ({ children, isSmallScreen }) => {
         <>
           <Menubar />
           <FullScreenPopupCenter />
-          <div className="w-[80%] min-h-full absolute right-0 p-5 px-10">
+          <div className="w-[80%] min-h-full absolute right-0 p-5 px-10 pb-32">
             {children}
           </div>
         </>

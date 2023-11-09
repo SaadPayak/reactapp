@@ -9,7 +9,7 @@ const MenubarMobile = () => {
   const { selectedMenubarItemId, setSelectedMenubarItemId } =
     useApplicationManager();
   return (
-    <div className=" bg-[#0a0a0a4f] backdrop-blur-md text-white-text-main fixed left-0 top-0 z-40 mt-[72px] w-[100%] max-h-screen overflow-y-scroll pb-28 ">
+    <div className=" bg-[#0a0a0a4f] backdrop-blur-md text-white-text-main fixed left-0 top-0 z-[10000] mt-[72px] w-[100%] max-h-screen overflow-y-scroll pb-28 ">
       <div className="w-full min-h-screen p-5 ">
         {menubarItems.map((obj, index) => {
           let tailwindClass = "mt-0";

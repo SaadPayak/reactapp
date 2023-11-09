@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { forYou } from "../../data/Songs/songs";
 const ForYou = () => {
   return (
-    <div className="mt-5 min-w-full pb-32">
+    <div className="mt-5 min-w-full ">
       <div>
         <h1 className="font-light text-xl text-gray-500">
           Music for <span className="text-gray-400">YOU</span>

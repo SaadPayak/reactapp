@@ -1,4 +1,4 @@
-import fallingInLoveWithYou from "../../songs/for-you/falling-in-love-with-you.mp3";
+// import fallingInLoveWithYou from "../../songs/for-you/falling-in-love-with-you.mp3";
 import loveStory from "../../songs/for-you/love-story.mp3";
 import channaVe from "../../songs/for-you/channa-ve.mp3";
 import beAlright from "../../songs/for-you/be-alright.mp3";
@@ -217,33 +217,33 @@ It'll be alright
 It'll be alright
 It'll be alright`,
   },
-  {
-    title: "Falling in love with you",
-    src: fallingInLoveWithYou,
-    author: "Elvis Persley",
-    coverImage: "assets/images/songs/for-you/falling-in-love-with-you.jpg",
-    songId: "2f71d5f6b72a4069a082f628d29b9055",
-    duration: "2m 54s",
-    releaseDate: "21 Nov, 1960",
-    plays: "0",
-    lyrics: `
-Wise men say
-Only fools, only fools rush in
-Oh, but I, but I, I can't help falling in love with you
+  //   {
+  //     title: "Falling in love with you",
+  //     src: fallingInLoveWithYou,
+  //     author: "Elvis Persley",
+  //     coverImage: "assets/images/songs/for-you/falling-in-love-with-you.jpg",
+  //     songId: "2f71d5f6b72a4069a082f628d29b9055",
+  //     duration: "2m 54s",
+  //     releaseDate: "21 Nov, 1960",
+  //     plays: "0",
+  //     lyrics: `
+  // Wise men say
+  // Only fools, only fools rush in
+  // Oh, but I, but I, I can't help falling in love with you
 
-Shall I stay?
-Would it be, would it be a sin?
-If I can't help falling in love with you
-    
-Like a river flows
-Surely to the sea
-Darling, so it goes
-Some things, you know, are meant to be
+  // Shall I stay?
+  // Would it be, would it be a sin?
+  // If I can't help falling in love with you
 
-Take my hand
-Take my whole life too
-For I can"t help falling in love with you
-For I can"t help falling in love with you
-Yeah`,
-  },
+  // Like a river flows
+  // Surely to the sea
+  // Darling, so it goes
+  // Some things, you know, are meant to be
+
+  // Take my hand
+  // Take my whole life too
+  // For I can"t help falling in love with you
+  // For I can"t help falling in love with you
+  // Yeah`,
+  //   },
 ];
