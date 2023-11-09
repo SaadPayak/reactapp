@@ -1,14 +1,17 @@
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 export const MenubarItem = ({
   icon,
   title,
   id,
   setSelectedMenubarItemId,
+  navigationUrl,
   isSelected = false,
   iconColor = "text-gray-300",
 }) => {
+  const navigate = useNavigate();
   const itemVariants = {
     hidden: { opacity: 0, x: -10 * id },
     visible: { opacity: 1, x: 0 },
@@ -39,6 +42,7 @@ export const MenubarItem = ({
       exit="hidden"
       onClick={() => {
         setSelectedMenubarItemId(id);
+        navigate(navigationUrl);
       }}
     >
       <motion.div className={iconTailwind}>

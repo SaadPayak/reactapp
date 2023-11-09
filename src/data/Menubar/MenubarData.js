@@ -13,18 +13,23 @@ export const menubarItems = [
   {
     category: "YOUR FEED",
     items: [
-      { icon: faBolt, title: "For You", id: 1 },
-      { icon: faChartSimple, title: "Top 100", id: 2 },
-      { icon: faSliders, title: "Mixes", id: 3 },
+      { icon: faBolt, title: "For You", id: 1, navigationUrl: "" },
+      {
+        icon: faChartSimple,
+        title: "Top 100",
+        id: 2,
+        navigationUrl: "/top-10",
+      },
+      { icon: faSliders, title: "Mixes", id: 3, navigationUrl: "" },
     ],
   },
   {
     category: "YOUR LIBRARY",
     items: [
-      { icon: faHeart, title: "Liked", id: 4 },
-      { icon: faClock, title: "Listen Later", id: 5 },
-      { icon: faHistory, title: "History", id: 6 },
-      { icon: faRecordVinyl, title: "Podcasts", id: 7 },
+      { icon: faHeart, title: "Liked", id: 4, navigationUrl: "" },
+      { icon: faClock, title: "Listen Later", id: 5, navigationUrl: "" },
+      { icon: faHistory, title: "History", id: 6, navigationUrl: "" },
+      { icon: faRecordVinyl, title: "Podcasts", id: 7, navigationUrl: "" },
     ],
   },
 ];

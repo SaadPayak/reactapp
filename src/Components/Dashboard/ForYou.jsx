@@ -1,7 +1,7 @@
 import React from "react";
 import SongOption from "../Reusables/SongOption";
 import { motion } from "framer-motion";
-import { tracks } from "../../data/Songs/ForYou/data";
+import { forYou } from "../../data/Songs/songs";
 const ForYou = () => {
   return (
     <div className="mt-5 min-w-full pb-32">
@@ -15,7 +15,7 @@ const ForYou = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
-        {tracks.map((track) => {
+        {forYou.map((track, index) => {
           return (
             <SongOption
               imagePath={track.coverImage}
@@ -23,6 +23,8 @@ const ForYou = () => {
               songLength={track.duration}
               uploadDate={track.releaseDate}
               songId={track.songId}
+              index={index}
+              libraryName="FOR-YOU"
               key={track.songId}
             />
           );

@@ -32,6 +32,7 @@ const Menubar = () => {
                         id={item.id}
                         icon={item.icon}
                         title={item.title}
+                        navigationUrl={item.navigationUrl}
                         iconColor={item.iconColor}
                         isSelected={item.id === selectedMenubarItemId}
                         setSelectedMenubarItemId={setSelectedMenubarItemId}

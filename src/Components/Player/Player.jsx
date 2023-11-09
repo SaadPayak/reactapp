@@ -1,39 +1,37 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import DisplayTrack from "./DisplayTrack";
 import ProgressBar from "./ProgressBar";
-import { tracks } from "../../data/Songs/ForYou/data.js";
 import "./styles.css";
 import { usePlayer } from "../../contexts/PlayerContext";
 
 const Player = ({ isSmallScreen }) => {
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const audioRef = useRef();
   const progressBarRef = useRef();
-  const [timeProgress, setTimeProgress] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const { currentSong, setCurrentSong } = usePlayer();
-
-  useEffect(() => {
-    setCurrentSong(tracks[currentTrackIndex]);
-  }, [currentTrackIndex, setCurrentSong]);
+  const {
+    currentSong,
+    setCurrentSong,
+    currentTrackIndex,
+    setCurrentTrackIndex,
+    timeProgress,
+    setTimeProgress,
+    duration,
+    setDuration,
+    songLibrary,
+  } = usePlayer();
 
   const playNextSong = () => {
-    const newIndex = (currentTrackIndex + 1) % tracks.length;
+    const newIndex = (currentTrackIndex + 1) % songLibrary.library.length;
     setCurrentTrackIndex(newIndex);
-    setCurrentSong(tracks[newIndex]);
-    setDuration(0);
-    setTimeProgress(0);
+    setCurrentSong(songLibrary.library[newIndex]);
   };
 
   const playPreviousSong = () => {
     let newIndex = currentTrackIndex - 1;
     if (newIndex < 0) {
-      newIndex = tracks.length - 1;
+      newIndex = songLibrary.library.length - 1;
     }
     setCurrentTrackIndex(newIndex);
-    setCurrentSong(tracks[newIndex]);
-    setDuration(0);
-    setTimeProgress(0);
+    setCurrentSong(songLibrary.library[newIndex]);
   };
 
   let playerTailwind =

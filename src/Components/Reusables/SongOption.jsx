@@ -13,6 +13,8 @@ const SongOption = ({
   songName,
   songLength,
   uploadDate,
+  libraryName,
+  index,
   songId,
 }) => {
   const { isSmallScreen } = useApplicationManager();
@@ -22,7 +24,12 @@ const SongOption = ({
         <SongImage imagePath={imagePath} />
         <SongName songName={songName} songLength={songLength} />
         <SongUploadDate uploadDate={uploadDate} />
-        <SongActions songId={songId} isSmallScreen={isSmallScreen} />
+        <SongActions
+          songId={songId}
+          isSmallScreen={isSmallScreen}
+          index={index}
+          libraryName={libraryName}
+        />
       </div>
     </div>
   );
@@ -57,21 +64,46 @@ const SongUploadDate = ({ uploadDate }) => {
   );
 };
 
-const SongActions = ({ isSmallScreen, songId }) => {
-  const { currentSong, isPlaying, setIsPlaying } = usePlayer();
-  console.log(songId === currentSong?.songId);
+const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
+  const { currentSong, isPlaying, setIsPlaying, singleSongPlayButtonHandler } =
+    usePlayer();
   if (isSmallScreen) {
     return (
       <div className="min-w-[40%] justify-end  h-14 mr-2 sm:min-w-[20%] flex items-center sm:justify-evenly rounded-md">
         <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
-          {currentSong?.songId === songId && isPlaying ? (
+          {currentSong?.songId === songId ? (
+            isPlaying ? (
+              <FontAwesomeIcon
+                icon={faPause}
+                onClick={() => {
+                  setIsPlaying(false);
+                }}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faPlay}
+                onClick={() => {
+                  setIsPlaying(true);
+                }}
+              />
+            )
+          ) : (
+            <FontAwesomeIcon
+              icon={faPlay}
+              onClick={() => {
+                setIsPlaying(true);
+                singleSongPlayButtonHandler(libraryName, index);
+              }}
+            />
+          )}
+          {/* {currentSong?.songId === songId && isPlaying ? (
             <FontAwesomeIcon
               icon={faPause}
               onClick={() => setIsPlaying(false)}
             />
           ) : (
             <FontAwesomeIcon icon={faPlay} onClick={() => setIsPlaying(true)} />
-          )}
+          )} */}
         </div>
         <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
           <FontAwesomeIcon icon={faEllipsisVertical} />
@@ -82,10 +114,30 @@ const SongActions = ({ isSmallScreen, songId }) => {
   return (
     <div className="min-w-[25%] h-14 mr-2 flex items-center justify-evenly rounded-md ">
       <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
-        {currentSong?.songId === songId && isPlaying ? (
-          <FontAwesomeIcon icon={faPause} onClick={() => setIsPlaying(false)} />
+        {currentSong?.songId === songId ? (
+          isPlaying ? (
+            <FontAwesomeIcon
+              icon={faPause}
+              onClick={() => {
+                setIsPlaying(false);
+              }}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faPlay}
+              onClick={() => {
+                setIsPlaying(true);
+              }}
+            />
+          )
         ) : (
-          <FontAwesomeIcon icon={faPlay} onClick={() => setIsPlaying(true)} />
+          <FontAwesomeIcon
+            icon={faPlay}
+            onClick={() => {
+              setIsPlaying(true);
+              singleSongPlayButtonHandler(libraryName, index);
+            }}
+          />
         )}
       </div>
       <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">

@@ -1,5 +1,6 @@
 import fallingInLoveWithYou from "../../../songs/for-you/falling-in-love-with-you.mp3";
 import loveStory from "../../../songs/for-you/love-story.mp3";
+import channaVe from "../../../songs/for-you/channa-ve.mp3";
 
 export const tracks = [
   {
@@ -10,6 +11,15 @@ export const tracks = [
     songId: "2f71d5f6b72a4069a082f628d29b9055",
     duration: "2m 54s",
     releaseDate: "21 Nov, 1960",
+  },
+  {
+    title: "Changeddddd Ve",
+    src: channaVe,
+    author: "Akhil Sachdeva & Mansheel",
+    coverImage: "assets/images/songs/for-you/channa-ve.jpg",
+    songId: "828d47b031a74a398a334c4878ca0dbb",
+    duration: "3m 26s",
+    releaseDate: "21 Feb, 2020",
   },
   {
     title: "Love story",
