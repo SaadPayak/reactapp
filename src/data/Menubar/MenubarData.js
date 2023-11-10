@@ -7,6 +7,7 @@ import {
   faHistory,
   faRecordVinyl,
   faSquare,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const menubarItems = [
@@ -21,15 +22,21 @@ export const menubarItems = [
         navigationUrl: "/top-10",
       },
       { icon: faSliders, title: "Mixes", id: 3, navigationUrl: "" },
+      {
+        icon: faUser,
+        title: "Artists",
+        id: 4,
+        navigationUrl: "/artists",
+      },
     ],
   },
   {
     category: "YOUR LIBRARY",
     items: [
-      { icon: faHeart, title: "Liked", id: 4, navigationUrl: "" },
-      { icon: faClock, title: "Listen Later", id: 5, navigationUrl: "" },
-      { icon: faHistory, title: "History", id: 6, navigationUrl: "" },
-      { icon: faRecordVinyl, title: "Podcasts", id: 7, navigationUrl: "" },
+      { icon: faHeart, title: "Liked", id: 5, navigationUrl: "" },
+      { icon: faClock, title: "Listen Later", id: 6, navigationUrl: "" },
+      { icon: faHistory, title: "History", id: 7, navigationUrl: "" },
+      { icon: faRecordVinyl, title: "Podcasts", id: 8, navigationUrl: "" },
     ],
   },
 ];
@@ -41,10 +48,10 @@ export const playlists = {
       icon: faSquare,
       iconColor: "text-purple-400",
       title: "Bolywood Hindi",
-      id: 8,
+      id: 9,
     },
-    { icon: faSquare, iconColor: "text-green-400", title: "Rap", id: 9 },
-    { icon: faSquare, iconColor: "text-blue-400", title: "Meera♥️", id: 10 },
-    { icon: faSquare, iconColor: "text-yellow-400", title: "Sad", id: 11 },
+    { icon: faSquare, iconColor: "text-green-400", title: "Rap", id: 10 },
+    { icon: faSquare, iconColor: "text-blue-400", title: "Meera♥️", id: 11 },
+    { icon: faSquare, iconColor: "text-yellow-400", title: "Sad", id: 12 },
   ],
 };
