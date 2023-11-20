@@ -1,8 +1,12 @@
 import React from "react";
 import SongOption from "../Reusables/SongOption";
 import { motion } from "framer-motion";
-import { forYou } from "../../data/Songs/songs";
+import { allSongs } from "../../data/Songs/songs";
 const ForYou = () => {
+  const forYou = allSongs.categories["FOR-YOU"].map((id) => {
+    return allSongs.all.find((song) => song.songId === id);
+  });
+
   return (
     <div className="mt-5 min-w-full ">
       <div>

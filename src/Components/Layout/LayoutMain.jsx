@@ -6,6 +6,7 @@ import { useApplicationManager } from "../../contexts/ApplicationContext";
 import { PlaylistsProvider } from "../../contexts/PlaylistsContext";
 import FullScreenPopupCenter from "./FullScreenPopupCenter";
 import Player from "../Player/Player";
+import { Toaster } from "react-hot-toast";
 // import PlayerMobile from "../Player/mobile/PlayerMobile";
 
 const LayoutMain = (props) => {
@@ -30,6 +31,7 @@ const LayoutMain = (props) => {
        font-noto "
       >
         <TopNavigation />
+        <Toaster />
         <ContentHolder isSmallScreen={isSmallScreen}>
           {props.children}
         </ContentHolder>

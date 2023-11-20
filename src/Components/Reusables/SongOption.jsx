@@ -1,8 +1,15 @@
 import React from "react";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeart,
+  faHeartCircleMinus,
+  faHeartCirclePlus,
+  faPause,
+  faPlay,
+} from "@fortawesome/free-solid-svg-icons";
 import { usePlayer } from "../../contexts/PlayerContext";
+import { useUser } from "../../contexts/UserContext";
 
 const SongOption = ({
   imagePath,
@@ -63,13 +70,14 @@ const SongUploadDate = ({ uploadDate }) => {
 const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
   const { currentSong, isPlaying, setIsPlaying, singleSongPlayButtonHandler } =
     usePlayer();
+  const { likedSongs, addToLikedSongs, removeFromLikedSongs } = useUser();
   if (isSmallScreen) {
     return (
       <div className="min-w-[40%] justify-end  h-14 mr-2 sm:min-w-[20%] flex items-center sm:justify-evenly rounded-md">
         {currentSong?.songId === songId ? (
           isPlaying ? (
             <div
-              className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+              className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
               onClick={() => {
                 setIsPlaying(false);
               }}
@@ -78,7 +86,7 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
             </div>
           ) : (
             <div
-              className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+              className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
               onClick={() => {
                 setIsPlaying(true);
               }}
@@ -88,7 +96,7 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
           )
         ) : (
           <div
-            className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+            className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
             onClick={() => {
               setIsPlaying(true);
               singleSongPlayButtonHandler(libraryName, index);
@@ -97,7 +105,7 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
             <FontAwesomeIcon icon={faPlay} />
           </div>
         )}
-        <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
+        <div className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
           <FontAwesomeIcon icon={faHeart} />
         </div>
       </div>
@@ -108,7 +116,7 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
       {currentSong?.songId === songId ? (
         isPlaying ? (
           <div
-            className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+            className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
             onClick={() => {
               setIsPlaying(false);
             }}
@@ -117,7 +125,7 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
           </div>
         ) : (
           <div
-            className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+            className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
             onClick={() => {
               setIsPlaying(true);
             }}
@@ -127,7 +135,7 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
         )
       ) : (
         <div
-          className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+          className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
           onClick={() => {
             setIsPlaying(true);
             singleSongPlayButtonHandler(libraryName, index);
@@ -136,9 +144,25 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
           <FontAwesomeIcon icon={faPlay} />
         </div>
       )}
-      <div className="hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
-        <FontAwesomeIcon icon={faHeart} />
-      </div>
+      {likedSongs.some((id) => id === songId) ? (
+        <div
+          className="text-red-500 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+          onClick={() => {
+            removeFromLikedSongs(songId);
+          }}
+        >
+          <FontAwesomeIcon icon={faHeartCircleMinus} />
+        </div>
+      ) : (
+        <div
+          className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+          onClick={() => {
+            addToLikedSongs(songId);
+          }}
+        >
+          <FontAwesomeIcon icon={faHeartCirclePlus} />
+        </div>
+      )}
     </div>
   );
 };
