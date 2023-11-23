@@ -6,8 +6,14 @@ import { MenubarItemMobile } from "./MenubarItemMobile";
 import PlaylistsMobile from "./PlaylistsMobile";
 
 const MenubarMobile = () => {
-  const { selectedMenubarItemId, setSelectedMenubarItemId } =
-    useApplicationManager();
+  const {
+    selectedMenubarItemId,
+    setSelectedMenubarItemId,
+    setIsMobileMenuActive,
+  } = useApplicationManager();
+  const closeMenuBarMobile = () => {
+    setIsMobileMenuActive(false);
+  };
   return (
     <div className=" bg-[#0a0a0a4f] backdrop-blur-md text-white-text-main fixed left-0 top-0 z-[10000] mt-[72px] w-[100%] max-h-screen overflow-y-scroll pb-28 ">
       <div className="w-full min-h-screen p-5 ">
@@ -30,6 +36,8 @@ const MenubarMobile = () => {
                       icon={item.icon}
                       title={item.title}
                       iconColor={item.iconColor}
+                      closeMenuBarMobile={closeMenuBarMobile}
+                      navigationUrl={item.navigationUrl}
                       isSelected={item.id === selectedMenubarItemId}
                       setSelectedMenubarItemId={setSelectedMenubarItemId}
                     />

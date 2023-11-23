@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
     const addedSong = allSongs.all.find((song) => song.songId === id);
     toast.custom((t) => <CustomToast t={t} addedSong={addedSong} />, {
       id: id,
-      duration: 1500,
+      duration: 3000,
     });
     setLikedSongs([...likedSongs, id]);
   }
@@ -52,7 +52,7 @@ const CustomToast = ({ t, addedSong }) => {
         <div className="flex items-start">
           <div className="flex-shrink-0 pt-0.5">
             <img
-              className="h-10 w-10 rounded-md"
+              className="h-11 w-11 rounded-md"
               src={addedSong.coverImage}
               alt=""
             />
@@ -61,7 +61,7 @@ const CustomToast = ({ t, addedSong }) => {
             <p className="text-sm font-medium text-gray-300">
               {addedSong.title}
             </p>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="text-xs text-gray-600 mt-1">
               Added to your liked songs ✅
             </p>
           </div>

@@ -15,6 +15,7 @@ module.exports = {
       },
       fontFamily: {
         noto: ["Noto Sans JP", "sans-serif"],
+        lexend: ["Lexend Deca", "sans-serif"],
       },
       backgroundImage: {
         test: `url('https://cdn.apollo.audio/one/media/64a4/3c11/c1f5/ac05/9e04/4904/tate-mcrae.jpg')`,

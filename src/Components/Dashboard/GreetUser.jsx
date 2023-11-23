@@ -14,7 +14,7 @@ const GreetUser = () => {
       initial="hidden"
       animate="visible"
     >
-      Welcome <span className="text-pink-primary font-normal">Yash</span>!
+      Welcome <span className="text-pink-primary font-normal">Meera</span>!
     </motion.div>
   );
 };

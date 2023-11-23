@@ -1,13 +1,17 @@
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 export const MenubarItemMobile = ({
   icon,
   title,
   id,
   setSelectedMenubarItemId,
+  navigationUrl,
+  closeMenuBarMobile,
   isSelected = false,
 }) => {
+  const navigate = useNavigate();
   const itemVariants = {
     hidden: { opacity: 0, x: -10 * id },
     visible: { opacity: 1, x: 0 },
@@ -34,6 +38,8 @@ export const MenubarItemMobile = ({
       exit="hidden"
       onClick={() => {
         setSelectedMenubarItemId(id);
+        navigate(navigationUrl);
+        closeMenuBarMobile();
       }}
     >
       <motion.div className="h-full w-[20%] flex justify-center items-center">

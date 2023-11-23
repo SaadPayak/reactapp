@@ -10,7 +10,7 @@ const Dashboard = () => {
     setSelectedMenubarItemId(1);
   }, [setSelectedMenubarItemId]);
   return (
-    <div className="text-white-text-main font-noto min-w-full min-h-screen overflow-hidden">
+    <div className="text-white-text-main font-lexend min-w-full min-h-screen overflow-hidden">
       <div className="min-h-screen min-w-full  flex flex-col items-start justify-start border-pink-primary">
         <GreetUser />
         <ForYou />

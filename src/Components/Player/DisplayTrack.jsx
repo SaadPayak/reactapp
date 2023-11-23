@@ -2,6 +2,7 @@ import React from "react";
 import Controls from "./Controls";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
 import SongDescription from "../Reusables/SongDescription";
+import SongDescriptionMobile from "../Reusables/mobile/SongDescriptionMobile";
 
 const DisplayTrack = ({
   currentSong,
@@ -13,7 +14,7 @@ const DisplayTrack = ({
   playNextSong,
   playPreviousSong,
 }) => {
-  const { activatePopupCenter } = useApplicationManager();
+  const { activatePopupCenter, isSmallScreen } = useApplicationManager();
   const onLoadedMetadata = () => {
     const seconds = audioRef.current.duration;
     setDuration(seconds);
@@ -24,7 +25,9 @@ const DisplayTrack = ({
       <div
         className="flex"
         onClick={() => {
-          activatePopupCenter(<SongDescription />);
+          activatePopupCenter(
+            isSmallScreen ? <SongDescriptionMobile /> : <SongDescription />
+          );
         }}
       >
         <div className="w-[43px] h-[43px]  rounded-md overflow-hidden relative">

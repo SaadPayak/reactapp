@@ -105,9 +105,28 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
             <FontAwesomeIcon icon={faPlay} />
           </div>
         )}
-        <div className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
+        {likedSongs.some((id) => id === songId) ? (
+          <div
+            className="text-red-500 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+            onClick={() => {
+              removeFromLikedSongs(songId);
+            }}
+          >
+            <FontAwesomeIcon icon={faHeartCircleMinus} />
+          </div>
+        ) : (
+          <div
+            className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
+            onClick={() => {
+              addToLikedSongs(songId);
+            }}
+          >
+            <FontAwesomeIcon icon={faHeartCirclePlus} />
+          </div>
+        )}
+        {/* <div className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
           <FontAwesomeIcon icon={faHeart} />
-        </div>
+        </div> */}
       </div>
     );
   }
