@@ -3,9 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import NavigationLogo from "./NavigationLogo";
 import NavigationAvatar from "./NavigationAvatar";
+import { useApplicationManager } from "../../contexts/ApplicationContext";
 
 const NavigationBarDesktop = () => {
   // image width
+  const { activateNavbarVisiblePopup } = useApplicationManager();
+
   return (
     <>
       {/* JYSEIFY Logo ⬇️ */}
@@ -17,6 +20,7 @@ const NavigationBarDesktop = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass} flip="horizontal" />
           </div>
           <input
+            onClick={() => activateNavbarVisiblePopup(<h1>Working</h1>)}
             placeholder="Search by artists, songs or albums"
             className="w-full h-full bg-transparent outline-none border-none placeholder:text-black-search-bar-placeholder"
           />

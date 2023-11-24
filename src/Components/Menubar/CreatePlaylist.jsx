@@ -23,14 +23,14 @@ const PlaylistInfo = () => {
   const { deactivatePopupCenter } = useApplicationManager();
   const { addToPlaylist } = usePlaylists();
   const playlistColors = [
-    "fuchsia-400",
-    "purple-400",
-    "green-400",
-    "yellow-400",
-    "blue-400",
-    "lime-400",
-    "cyan-400",
-    "rose-400",
+    "#f83b43",
+    "#3bc6f8",
+    "#bff83b",
+    "#52f83b",
+    "#f8783b",
+    "#493bf8",
+    "#f0a3bc",
+    "#7ec143",
   ];
   return (
     <div className="">
@@ -46,13 +46,14 @@ const PlaylistInfo = () => {
         />
         <div className="mt-4  grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-2 justify-items-center items-center">
           {playlistColors.map((color) => {
-            let tailwindClass = `w-6 h-6 rounded-sm cursor-pointer mb-3 bg-${color}`;
+            let tailwindClass = `w-6 h-6 rounded-sm cursor-pointer mb-3`;
             if (color === playlistColor) {
               tailwindClass += " border-white border-[2px] ";
             }
             return (
               <div
                 className={tailwindClass}
+                style={{ background: color }}
                 onClick={() => setplaylistColor(color)}
               ></div>
             );
@@ -61,8 +62,10 @@ const PlaylistInfo = () => {
         <div
           className="w-full h-10 my-7 text-white text-sm overflow-hidden flex justify-center items-center cursor-pointer rounded-md  bg-pink-primary hover:bg-pink-secondary transition-all duration-200 ease-in-out"
           onClick={() => {
+            if (!playlistName) {
+              return;
+            }
             addToPlaylist(playlistName, playlistColor);
-
             deactivatePopupCenter();
           }}
         >

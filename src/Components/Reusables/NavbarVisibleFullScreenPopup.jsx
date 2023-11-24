@@ -2,16 +2,16 @@ import { useEffect } from "react";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
 import { motion } from "framer-motion";
 
-const FullScreenPopupCenter = () => {
-  const { fullScreenPopCenter, deactivatePopupCenter } =
+const NavbarVisibleFullScreenPopup = () => {
+  const { navbarVisibleFullScreenPopup, deactivateNavbarVisiblePopup } =
     useApplicationManager();
   // Adding ESC to disable the popup: Keyboard control -> Good UX
   useEffect(() => {
     // Add an event listener to listen for the ESC key press
     const handleKeyPress = (event) => {
       if (event.keyCode === 27) {
-        // Call the deactivatePopupCenter function when ESC is pressed
-        deactivatePopupCenter();
+        // Call the deactivateNavbarVisiblePopup function when ESC is pressed
+        deactivateNavbarVisiblePopup();
       }
     };
     // Add the event listener when the component mounts
@@ -20,19 +20,19 @@ const FullScreenPopupCenter = () => {
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
-  }, [deactivatePopupCenter]);
+  }, [deactivateNavbarVisiblePopup]);
   const childComponentVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.2 } },
   };
 
-  if (!fullScreenPopCenter.isActive) {
+  if (!navbarVisibleFullScreenPopup.isActive) {
     return;
   }
   return (
     <motion.div
-      className="w-screen h-screen fixed top-0 left-0 bg-[#0a0a0a4f] backdrop-blur-md z-[10000000] flex justify-center items-center overflow-y-scroll"
-      onClick={deactivatePopupCenter}
+      className="w-screen h-screen fixed top-0 left-0 bg-[#0a0a0a4f] backdrop-blur-md z-[100000] flex justify-center items-center overflow-y-scroll"
+      onClick={deactivateNavbarVisiblePopup}
       initial={{ backdropFilter: "blur(0px)" }}
       animate={{ backdropFilter: "blur(10px)", transition: { duration: 0.05 } }}
     >
@@ -44,10 +44,10 @@ const FullScreenPopupCenter = () => {
         className="absolute z-[150]"
         onClick={(e) => e.stopPropagation()}
       >
-        {fullScreenPopCenter.component}
+        {navbarVisibleFullScreenPopup.component}
       </motion.div>
     </motion.div>
   );
 };
 
-export default FullScreenPopupCenter;
+export default NavbarVisibleFullScreenPopup;

@@ -8,6 +8,7 @@ import FullScreenPopupCenter from "../Reusables/FullScreenPopupCenter";
 import Player from "../Player/Player";
 import { Toaster } from "react-hot-toast";
 import FullScreenPopupCenterMobile from "../Reusables/mobile/FullScreenPopupCenterMobile";
+import NavbarVisibleFullScreenPopup from "../Reusables/NavbarVisibleFullScreenPopup";
 // import PlayerMobile from "../Player/mobile/PlayerMobile";
 
 const LayoutMain = (props) => {
@@ -32,9 +33,15 @@ const ContentHolder = ({ children }) => {
   return (
     <div className="w-full min-h-screen relative  mt-[72px] flex ">
       {isSmallScreen ? (
-        <FullScreenPopupCenterMobile />
+        <>
+          <FullScreenPopupCenterMobile />
+          <NavbarVisibleFullScreenPopup />
+        </>
       ) : (
-        <FullScreenPopupCenter />
+        <>
+          <FullScreenPopupCenter />
+          <NavbarVisibleFullScreenPopup />
+        </>
       )}
       {isSmallScreen ? (
         <>

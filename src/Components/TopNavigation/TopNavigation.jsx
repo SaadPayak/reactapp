@@ -16,7 +16,7 @@ const TopNavigation = () => {
     };
   }, []);
   return (
-    <nav className="text-white fixed top-0 left-0 z-50 w-full px-5 py-3 flex  bg-black-main items-center justify-between after:w-full after:h-4 after:absolute after:bottom-[-10px] after:left-0 after:bg-gradient-to-b after:from-black-main after:to-transparent ">
+    <nav className="text-white fixed top-0 left-0 z-[1000000] w-full px-5 py-3 flex  bg-black-main items-center justify-between after:w-full after:h-4 after:absolute after:bottom-[-10px] after:left-0 after:bg-gradient-to-b after:from-black-main after:to-transparent ">
       {!isSmallScreen ? <NavigationBarDesktop /> : <NavigationBarMobile />}
     </nav>
   );

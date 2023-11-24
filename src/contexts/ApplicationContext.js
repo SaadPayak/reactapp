@@ -19,6 +19,12 @@ export const ApplicationManagerProvider = ({ children }) => {
     Component: null,
   });
 
+  const [navbarVisibleFullScreenPopup, setNavbarVisibleFullScreenPopup] =
+    useState({
+      isActive: false,
+      Component: null,
+    });
+
   // Mobile Options
   const [isMobileMenuActive, setIsMobileMenuActive] = useState(false);
 
@@ -29,6 +35,11 @@ export const ApplicationManagerProvider = ({ children }) => {
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth <= 850);
+      if (window.innerWidth <= 850) {
+        // Deactivate any popups if a user switches from large to small screen using browser responsive option.
+        // Reason for adding: When song description in desktop mode was enabled and when switched to mobile version using browser's responsive option, the desktop version of song description continued to persist even in the mobile version. (Mobile has its own version of Song Description)
+        deactivatePopupCenter();
+      }
     };
 
     window.addEventListener("resize", handleResize);
@@ -46,9 +57,19 @@ export const ApplicationManagerProvider = ({ children }) => {
     setFullScreenPopCenter({ isActive: false, component: null });
   };
 
+  const activateNavbarVisiblePopup = (component) => {
+    setNavbarVisibleFullScreenPopup({ isActive: true, component });
+  };
+  const deactivateNavbarVisiblePopup = () => {
+    setNavbarVisibleFullScreenPopup({ isActive: false, component: null });
+  };
+
   const value = {
     fullScreenPopCenter,
     setFullScreenPopCenter,
+
+    navbarVisibleFullScreenPopup,
+    setNavbarVisibleFullScreenPopup,
 
     isMobileMenuActive,
     setIsMobileMenuActive,
@@ -59,6 +80,9 @@ export const ApplicationManagerProvider = ({ children }) => {
 
     activatePopupCenter,
     deactivatePopupCenter,
+
+    activateNavbarVisiblePopup,
+    deactivateNavbarVisiblePopup,
   };
   return (
     <ApplicationManagerContext.Provider value={value}>

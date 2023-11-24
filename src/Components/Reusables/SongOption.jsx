@@ -2,7 +2,6 @@ import React from "react";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHeart,
   faHeartCircleMinus,
   faHeartCirclePlus,
   faPause,
@@ -124,9 +123,6 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
             <FontAwesomeIcon icon={faHeartCirclePlus} />
           </div>
         )}
-        {/* <div className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out">
-          <FontAwesomeIcon icon={faHeart} />
-        </div> */}
       </div>
     );
   }

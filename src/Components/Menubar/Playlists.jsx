@@ -13,6 +13,7 @@ const Playlists = () => {
   return (
     <div className="mt-5 border-b-[1px] border-black-ultra-light pb-5">
       <h1 className="mb-3 text-xs font-bold text-gray-500">YOUR PLAYLISTS</h1>
+      <CreatePlaylist />
       <AnimatePresence mode="wait">
         {playlists.map((item) => {
           const itemVariants = {
@@ -49,7 +50,10 @@ const Playlists = () => {
                 setSelectedMenubarItemId(item.id);
               }}
             >
-              <motion.div className={iconTailwind}>
+              <motion.div
+                className={iconTailwind}
+                style={{ color: item.iconColor }}
+              >
                 <FontAwesomeIcon icon={item.icon} flip="horizontal" />
               </motion.div>
               <motion.div className="relative h-full w-[80%] flex justify-start items-center">
@@ -59,7 +63,6 @@ const Playlists = () => {
           );
         })}
       </AnimatePresence>
-      <CreatePlaylist />
     </div>
   );
 };

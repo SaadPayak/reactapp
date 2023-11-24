@@ -11,7 +11,12 @@ import { useApplicationManager } from "../../contexts/ApplicationContext";
 
 const NavigationBarMobile = () => {
   const [isSearchActivated, setIsSearchActivated] = useState(false);
-  const { isMobileMenuActive, setIsMobileMenuActive } = useApplicationManager();
+  const {
+    isMobileMenuActive,
+    setIsMobileMenuActive,
+    activateNavbarVisiblePopup,
+    deactivateNavbarVisiblePopup,
+  } = useApplicationManager();
   return (
     <>
       {/* JYSEIFY Logo ⬇️ */}
@@ -22,7 +27,10 @@ const NavigationBarMobile = () => {
           <div className="bg-black-search-bar min-w-[100px] w-full h-12 flex overflow-hidden rounded-lg">
             <div
               className="h-full w-16 flex justify-center items-center"
-              onClick={() => setIsSearchActivated(false)}
+              onClick={() => {
+                deactivateNavbarVisiblePopup();
+                setIsSearchActivated(false);
+              }}
             >
               <FontAwesomeIcon icon={faX} flip="horizontal" />
             </div>
@@ -40,7 +48,10 @@ const NavigationBarMobile = () => {
           {/* Search Icon ⬇️ */}
           <div
             className="mr-6 text-xl text-gray-500"
-            onClick={() => setIsSearchActivated(true)}
+            onClick={() => {
+              setIsSearchActivated(true);
+              activateNavbarVisiblePopup(<h1>Working</h1>);
+            }}
           >
             <FontAwesomeIcon icon={faMagnifyingGlass} flip="horizontal" />
           </div>
@@ -48,7 +59,9 @@ const NavigationBarMobile = () => {
           {isMobileMenuActive ? (
             <div
               className="mr-6 text-xl text-gray-500"
-              onClick={() => setIsMobileMenuActive(false)}
+              onClick={() => {
+                setIsMobileMenuActive(false);
+              }}
             >
               <FontAwesomeIcon icon={faX} flip="horizontal" />
             </div>
