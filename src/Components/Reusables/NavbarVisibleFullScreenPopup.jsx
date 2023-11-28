@@ -31,10 +31,10 @@ const NavbarVisibleFullScreenPopup = () => {
   }
   return (
     <motion.div
-      className="w-screen h-screen fixed top-0 left-0 bg-[#0a0a0a4f] backdrop-blur-md z-[100000] flex justify-center items-center overflow-y-scroll"
+      className="w-screen h-screen fixed top-0 left-0 bg-[#0a0a0a4f] z-[100000] flex justify-center items-center overflow-y-scroll"
       onClick={deactivateNavbarVisiblePopup}
       initial={{ backdropFilter: "blur(0px)" }}
-      animate={{ backdropFilter: "blur(10px)", transition: { duration: 0.05 } }}
+      animate={{ backdropFilter: "blur(15px)", transition: { duration: 0.15 } }}
     >
       <motion.div
         initial="hidden"
