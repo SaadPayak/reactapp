@@ -9,6 +9,7 @@ import Player from "../Player/Player";
 import { Toaster } from "react-hot-toast";
 import FullScreenPopupCenterMobile from "../Reusables/mobile/FullScreenPopupCenterMobile";
 import NavbarVisibleFullScreenPopup from "../Reusables/NavbarVisibleFullScreenPopup";
+import Player2 from "../Player/Player2";
 // import PlayerMobile from "../Player/mobile/PlayerMobile";
 
 const LayoutMain = (props) => {
@@ -21,7 +22,10 @@ const LayoutMain = (props) => {
        font-lexend "
       >
         <TopNavigation />
-        <Toaster />
+        <div class="fixed top-0 left-1/2 -translate-x-1/2 z-[10000000] w-full">
+          <Toaster />
+        </div>
+
         <ContentHolder>{props.children}</ContentHolder>
       </div>
     </PlaylistsProvider>
@@ -60,7 +64,8 @@ const ContentHolder = ({ children }) => {
           </div>
         </>
       )}
-      <Player isSmallScreen={isSmallScreen} />
+      <Player2 isSmallScreen={isSmallScreen} />
+      {/* <Player isSmallScreen={isSmallScreen} /> */}
     </div>
   );
 };
