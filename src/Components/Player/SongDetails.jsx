@@ -1,25 +1,20 @@
 import React from "react";
-import Controls from "./Controls";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
-import SongDescription from "../Reusables/SongDescription";
 import SongDescriptionMobile from "../Reusables/mobile/SongDescriptionMobile";
+import SongDescription from "../Reusables/SongDescription";
+import Controls from "./Controls";
 
-const DisplayTrack = ({
+const SongDetails = ({
+  isSmallScreen,
   currentSong,
+  isPlaying,
   audioRef,
-  setDuration,
-  progressBarRef,
-  duration,
-  setTimeProgress,
+  timeUpdateHandler,
   playNextSong,
   playPreviousSong,
+  togglePlayPause,
 }) => {
-  const { activatePopupCenter, isSmallScreen } = useApplicationManager();
-  const onLoadedMetadata = () => {
-    const seconds = audioRef.current.duration;
-    setDuration(seconds);
-    progressBarRef.current.max = seconds;
-  };
+  const { activatePopupCenter } = useApplicationManager();
   return (
     <div className=" py-3 flex justify-between items-center cursor-pointer">
       <div
@@ -38,27 +33,29 @@ const DisplayTrack = ({
           />
         </div>
         <div className=" bg-purple-00 px-4 flex flex-col justify-center items-start">
-          <h1 className="text-sm text-gray-300">{currentSong?.title}</h1>
-          <h1 className="text-xs text-gray-500">{currentSong?.author}</h1>
+          <h1 className="text-sm text-gray-300 whitespace-nowrap text-ellipsis">
+            {currentSong?.title}
+          </h1>
+          <h1 className="text-xs text-gray-500 whitespace-nowrap text-ellipsis">
+            {currentSong?.author}
+          </h1>
         </div>
-        <audio
-          src={currentSong?.src}
-          ref={audioRef}
-          onLoadedMetadata={onLoadedMetadata}
-        />
       </div>
+      <audio
+        onTimeUpdate={timeUpdateHandler}
+        onLoadedMetadata={timeUpdateHandler}
+        ref={audioRef}
+        src={currentSong?.src}
+        onEnded={playNextSong}
+      />
       <div>
+        {/* Controls */}
         <Controls
-          audioRef={audioRef}
-          progressBarRef={progressBarRef}
-          duration={duration}
-          setTimeProgress={setTimeProgress}
-          playNextSong={playNextSong}
-          playPreviousSong={playPreviousSong}
+          {...{ isPlaying, playNextSong, playPreviousSong, togglePlayPause }}
         />
       </div>
     </div>
   );
 };
 
-export default DisplayTrack;
+export default SongDetails;

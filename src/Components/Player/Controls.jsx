@@ -1,74 +1,18 @@
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBackward,
   faForward,
   faPause,
   faPlay,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useEffect, useRef } from "react";
-import { usePlayer } from "../../contexts/PlayerContext";
 
 const Controls = ({
-  audioRef,
-  progressBarRef,
-  duration,
-  setTimeProgress,
+  isPlaying,
   playNextSong,
   playPreviousSong,
+  togglePlayPause,
 }) => {
-  const { isPlaying, setIsPlaying } = usePlayer();
-  const playAnimationRef = useRef();
-
-  const repeat = useCallback(() => {
-    const currentTime = audioRef.current.currentTime;
-    setTimeProgress(currentTime);
-    progressBarRef.current.value = currentTime;
-    progressBarRef.current.style.setProperty(
-      "--range-progress",
-      `${(progressBarRef.current.value / duration) * 100}%`
-    );
-    if (Math.round((progressBarRef.current.value / duration) * 100) === 100) {
-      playNextSong();
-    }
-    playAnimationRef.current = requestAnimationFrame(repeat);
-  }, [audioRef, duration, progressBarRef, setTimeProgress, playNextSong]);
-
-  useEffect(() => {
-    if (isPlaying) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
-    playAnimationRef.current = requestAnimationFrame(repeat);
-  }, [isPlaying, audioRef, repeat]);
-
-  // const animate = () => {
-  //   const currentTime = audioRef.current.currentTime;
-  //   setTimeProgress(currentTime);
-  //   progressBarRef.current.value = currentTime;
-  //   progressBarRef.current.style.setProperty(
-  //     "--range-progress",
-  //     `${(progressBarRef.current.value / duration) * 100}%`
-  //   );
-  //   if (Math.round((progressBarRef.current.value / duration) * 100) === 100) {
-  //     playNextSong();
-  //   }
-  //   requestRef.current = requestAnimationFrame(animate);
-  // };
-
-  // useEffect(() => {
-  //   if (isPlaying) {
-  //     audioRef.current.play();
-  //     requestRef.current = requestAnimationFrame(animate);
-  //   } else {
-  //     audioRef.current.pause();
-  //     cancelAnimationFrame(requestRef.current);
-  //   }
-  // }, [isPlaying, audioRef, animate]);
-
-  const togglePlayPause = () => {
-    setIsPlaying((prev) => !prev);
-  };
   return (
     <div>
       <div className=" flex justify-center items-center text-xl ">
@@ -103,5 +47,4 @@ const Controls = ({
     </div>
   );
 };
-
 export default Controls;

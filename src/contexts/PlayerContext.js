@@ -16,6 +16,11 @@ export const usePlayer = () => {
 export const PlayerProvider = ({ children }) => {
   const { likedSongs } = useUser();
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+  const [songInfo, setSongInfo] = useState({
+    currentTime: 0,
+    duration: 0,
+    animationPercentage: 0,
+  });
   const [songLibrary, setSongLibrary] = useState({
     category: "FOR-YOU",
     library: allSongs.categories["FOR-YOU"].map((id) => {
@@ -28,8 +33,6 @@ export const PlayerProvider = ({ children }) => {
     })[currentTrackIndex]
   );
   const [isPlaying, setIsPlaying] = useState(false);
-  const [timeProgress, setTimeProgress] = useState(0);
-  const [duration, setDuration] = useState(0);
 
   const singleSongPlayButtonHandler = (library, index) => {
     if (library === songLibrary.category) {
@@ -94,14 +97,12 @@ export const PlayerProvider = ({ children }) => {
     setCurrentSong,
     currentTrackIndex,
     setCurrentTrackIndex,
+    songInfo,
+    setSongInfo,
     songLibrary,
     setSongLibrary,
     isPlaying,
     setIsPlaying,
-    timeProgress,
-    setTimeProgress,
-    duration,
-    setDuration,
     singleSongPlayButtonHandler,
   };
   return (

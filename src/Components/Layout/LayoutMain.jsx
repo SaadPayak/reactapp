@@ -5,11 +5,10 @@ import MenubarMobile from "../Menubar/Mobile/MenubarMobile";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
 import { PlaylistsProvider } from "../../contexts/PlaylistsContext";
 import FullScreenPopupCenter from "../Reusables/FullScreenPopupCenter";
-import Player from "../Player/Player";
 import { Toaster } from "react-hot-toast";
 import FullScreenPopupCenterMobile from "../Reusables/mobile/FullScreenPopupCenterMobile";
 import NavbarVisibleFullScreenPopup from "../Reusables/NavbarVisibleFullScreenPopup";
-import Player2 from "../Player/Player2";
+import Player2 from "../Player/Player";
 // import PlayerMobile from "../Player/mobile/PlayerMobile";
 
 const LayoutMain = (props) => {
