@@ -5,6 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import NavigationLogo from "./NavigationLogo";
 import NavigationAvatar from "./NavigationAvatar";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
@@ -23,10 +24,15 @@ const NavigationBarMobile = () => {
       <NavigationLogo />
       {/* Search bar ⬇️ */}
       {isSearchActivated && (
-        <div className="min-w-[85%] h-12 flex">
+        <motion.div
+          className="min-w-[85%] h-12 flex"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 100 }}
+          transition={{ duration: 0.3 }}
+        >
           <div className="bg-black-search-bar min-w-[100px] w-full h-12 flex overflow-hidden rounded-lg">
             <div
-              className="h-full w-16 flex justify-center items-center"
+              className="h-full w-16 flex justify-center items-center cursor-pointer"
               onClick={() => {
                 deactivateNavbarVisiblePopup();
                 setIsSearchActivated(false);
@@ -39,7 +45,7 @@ const NavigationBarMobile = () => {
               className="w-full h-full bg-transparent outline-none border-none placeholder:text-black-search-bar-placeholder"
             />
           </div>
-        </div>
+        </motion.div>
       )}
 
       {/* Profile Section ⬇️ */}

@@ -14,12 +14,14 @@ const SongDescription = () => {
   const { deactivatePopupCenter } = useApplicationManager();
   return (
     <div className="w-[800px] h-[450px] rounded-lg overflow-hidden flex justify-center items-center bg-black-secondary">
-      <div className="w-1/2 h-full  relative">
-        <img
-          src={currentSong.coverImage}
-          alt={currentSong.title}
-          className="absolute w-full h-full top-0 left-0 object-fit"
-        />
+      <div className="w-1/2 h-full flex justify-center items-center">
+        <div className="w-[350px] h-[350px]  relative rounded-md overflow-hidden">
+          <img
+            src={currentSong.coverImage}
+            alt={currentSong.title}
+            className="absolute w-full h-full top-0 left-0 object-fit"
+          />
+        </div>
       </div>
       <div className="w-1/2 h-full bg relative overflow-y-scroll scrollbar-hidden">
         <div

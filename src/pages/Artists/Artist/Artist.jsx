@@ -6,13 +6,16 @@ import ArtistBanner from "../../../Components/Artists/Artist/ArtistBanner";
 import SongOption from "../../../Components/Reusables/SongOption";
 import { useApplicationManager } from "../../../contexts/ApplicationContext";
 import { allSongs } from "../../../data/Songs/songs";
+
 const Artist = () => {
   const { id } = useParams();
   const { setSelectedMenubarItemId } = useApplicationManager();
+
   useEffect(() => {
     // 4 represents id of artists in menubar, this changes the currently selected item on the menubar if user indirectly visits the artists section (eg: from artsits panel in home page)
     setSelectedMenubarItemId(4);
   }, [setSelectedMenubarItemId]);
+
   const artist = artists.find((artist) => artist.navigationUrl === id);
   const songs = allSongs.categories["ARTISTS"][artist.id].map((id) => {
     return allSongs.all.find((song) => song.songId === id);

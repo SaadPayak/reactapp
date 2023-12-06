@@ -8,8 +8,8 @@ const ArtistsPanel = () => {
     <div className="w-full my-4 relative">
       <div className="absolute top-0 left-0 w-3 h-full bg-gradient-to-r from-black-main panel z-50"></div>
       <div className="absolute top-0 right-0 w-3 h-full bg-gradient-to-l from-black-main panel z-50"></div>
-      <h1 className="text-2xl font-light text-gray-500 relative z-50">
-        Artists
+      <h1 className="text-xl font-light text-gray-500 relative z-50">
+        Artists of the Week
       </h1>
       <div className="flex items-center justify-start h-72 overflow-x-scroll scrollbar-hidden">
         {artists.map((artist) => (

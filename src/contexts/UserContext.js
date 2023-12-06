@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 import { allSongs } from "../data/Songs/songs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+
 const UserContext = createContext();
 
 export const useUser = () => {
@@ -43,10 +45,12 @@ export const UserProvider = ({ children }) => {
 
 const CustomToast = ({ t, addedSong }) => {
   return (
-    <div
+    <motion.div
       className={`${
         t.visible ? "animate-enter" : "animate-leave"
       } max-w-md w-full bg-black-secondary shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+      initial={{ opacity: 0, y: -50, scale: 0.8 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
     >
       <div className="flex-1 w-0 p-4">
         <div className="flex items-start">
@@ -74,6 +78,6 @@ const CustomToast = ({ t, addedSong }) => {
           onClick={() => toast.dismiss(t.id)}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };

@@ -7,7 +7,8 @@ import { useApplicationManager } from "../../contexts/ApplicationContext";
 
 const NavigationBarDesktop = () => {
   // image width
-  const { activateNavbarVisiblePopup } = useApplicationManager();
+  const { activateNavbarVisiblePopup, deactivateNavbarVisiblePopup } =
+    useApplicationManager();
 
   return (
     <>
@@ -20,7 +21,12 @@ const NavigationBarDesktop = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass} flip="horizontal" />
           </div>
           <input
-            onClick={() => activateNavbarVisiblePopup(<h1>Working</h1>)}
+            onFocus={() =>
+              activateNavbarVisiblePopup(
+                <h1 className="text-white">Working</h1>
+              )
+            }
+            onBlur={deactivateNavbarVisiblePopup}
             placeholder="Search by artists, songs or albums"
             className="w-full h-full bg-transparent outline-none border-none placeholder:text-black-search-bar-placeholder"
           />

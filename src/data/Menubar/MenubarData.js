@@ -17,7 +17,7 @@ export const menubarItems = [
       { icon: faBolt, title: "For You", id: 1, navigationUrl: "/" },
       {
         icon: faChartSimple,
-        title: "Top 100",
+        title: "Top 10",
         id: 2,
         navigationUrl: "/top-10",
       },

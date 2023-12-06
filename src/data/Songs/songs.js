@@ -371,9 +371,63 @@ So find someone great, but don't find no one better
 I hope you're happy, but don't be happier
       `,
     },
+    {
+      title: "Tu Jaane Na",
+      src: "https://firebasestorage.googleapis.com/v0/b/realtimedb-b9ceb.appspot.com/o/tu-jaane-na.mp3?alt=media&token=55300918-ebac-4e33-87f0-f044f64b00a1",
+      author: "Atif Aslam",
+      coverImage: "/assets/images/songs/tu-jaane-na.jpeg",
+      songId: "4de928e76d6e44c19d634825abb55c2a",
+      duration: "5m 37s",
+      releaseDate: "6 Nov, 2009",
+      plays: "0",
+      lyrics: `
+Kaise bataaye kyun tujhako chaahe, yaara bata na paaye
+Baatein dilon ki dekho jo baaki aankhein tujhe samjhaaye
+Tu jaane na, tu jaane na, tu jaane na, tu jaane na
+
+Milake bhi hum na mile tumase na jaane kyun milon ke hai faasale
+Tumase na jaane kyun anjaane hai silsile
+Tumase na jaane kyun sapane hai palakon tale
+Tumase na jaane kyun
+
+Kaise bataaye kyun tujhako chaahe, yaara bata na paaye
+Baatein dilon ki dekho jo baaki aankhein tujhe samjhaaye
+Tu jaane na, tu jaane na, tu jaane na, tu jaane na
+
+Nigaahon mein dekho meri jo hai bas gaya
+Woh hai milata tumase hubahu
+O o o jaane teri aankhein thi ya baatein thi wajah
+Huye tum jo dil ki aaraju
+
+Tum paas hoke bhi tum aas hoke bhi
+Ehsaas hoke bhi apane nahi aise hai
+Hamako gile tumase na jaane milon ke hai faasale
+Tumase na jaane kyun
+Tu jaane na, tu jaane na, tu jaane na, tu jaane na
+Ho jaane na, jaane na, jaane na, jaane na
+Aa aa aa... tu jaane na
+
+Khayaalon mein laakhon baatein yuun toh keh gaya
+Bola kuchh na tere saamane
+O o o huye na begaane bhi tum hoke aur ke
+Dekho tum na mere hi bane
+
+Afsos hota hai dil bhi yeh rota
+Sapane sanjota hai pagala huwa soche yeh
+Hum the mile tumase na jaane kyun milon ke hai faasale
+Tumase na jaane kyun anjaane hai sisile
+Tumase na jaane kyun sapane hai palakon tale
+Tumase na jaane kyun o o o o...
+
+Kaise bataaye kyun tujhako chaahe, yaara bata na paaye
+Baatein dilon ki dekho jo baaki aankhein tujhe samjhaaye
+Tu jaane na, tu jaane na, tu jaane na, tu jaane na...      
+      `,
+    },
   ],
   categories: {
     "FOR-YOU": [
+      "4de928e76d6e44c19d634825abb55c2a",
       "736c1fc47a7946d1b6516fde8efee85c",
       "828d47b031a74a398a334c4878ca0dbb",
       "4419cb670cf143ca9428b26791231e29",
@@ -381,6 +435,8 @@ I hope you're happy, but don't be happier
     ARTISTS: {
       "TATE-MCRAE": ["4419cb670cf143ca9428b26791231e29"],
       "OLIVIA-RODRIGO": ["66dea241d7554d3b8cc83be1a4553be2"],
+      "ATIF-ASLAM": ["4de928e76d6e44c19d634825abb55c2a"],
+      "RAHAT-FATEH-ALI-KHAN": [],
     },
   },
 };

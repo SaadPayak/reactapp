@@ -97,20 +97,16 @@ input.song-range {
   top: 0;
   left: 0;
   height: 100%;
+}
 
-  &:focus {
-    outline: none;
-  }
+input.song-range:focus {
+  outline: none;
+}
 
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    /* height: 16px;
-    width: 16px; */
-  }
+input.song-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
 
-  &::-moz-range-thumb {
-    -webkit-appearance: none;
-    /* height: 16px;
-    width: 16px; */
-  }
+input.song-range::-moz-range-thumb {
+  -webkit-appearance: none;
 }
