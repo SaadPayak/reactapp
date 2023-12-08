@@ -84,7 +84,7 @@ const Player = ({ isSmallScreen }) => {
   if (isSmallScreen) {
     playerTailwind += " w-[100%]";
   } else {
-    playerTailwind += " w-[80%]";
+    playerTailwind += " w-[75%] lg:w-[80%]";
   }
   return (
     <div className={playerTailwind}>

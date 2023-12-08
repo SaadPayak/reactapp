@@ -21,7 +21,11 @@ const SongDetails = ({
         className="flex"
         onClick={() => {
           activatePopupCenter(
-            isSmallScreen ? <SongDescriptionMobile /> : <SongDescription />
+            isSmallScreen ? (
+              <SongDescriptionMobile song={currentSong} />
+            ) : (
+              <SongDescription song={currentSong} />
+            )
           );
         }}
       >

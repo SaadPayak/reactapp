@@ -58,7 +58,7 @@ const ContentHolder = ({ children }) => {
         <>
           <Menubar />
           {/* <FullScreenPopupCenter /> */}
-          <div className="w-[80%] min-h-full absolute right-0 p-5 px-10 pb-32">
+          <div className="w-[75%] lg:w-[80%] min-h-full absolute right-0 p-5 px-10 pb-32">
             {children}
           </div>
         </>

@@ -9,8 +9,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { usePlayer } from "../../contexts/PlayerContext";
 import { useUser } from "../../contexts/UserContext";
+import SongDescriptionMobile from "./mobile/SongDescriptionMobile";
+import SongDescription from "./SongDescription";
 
 const SongOption = ({
+  song,
   imagePath,
   songName,
   songLength,
@@ -19,9 +22,20 @@ const SongOption = ({
   index,
   songId,
 }) => {
-  const { isSmallScreen } = useApplicationManager();
+  const { isSmallScreen, activatePopupCenter } = useApplicationManager();
   return (
-    <div className=" min-w-[200px] mt-4 overflow-hidden border-b-[1px] border-black-secondary hover:bg-black-secondary hover:rounded-md  cursor-pointer transition-all duration-150 ease-in-out">
+    <div
+      className=" min-w-[200px] mt-4 overflow-hidden border-b-[1px] border-black-secondary hover:bg-black-secondary hover:rounded-md  cursor-pointer transition-all duration-150 ease-in-out"
+      onClick={() => {
+        activatePopupCenter(
+          isSmallScreen ? (
+            <SongDescriptionMobile song={song} />
+          ) : (
+            <SongDescription song={song} />
+          )
+        );
+      }}
+    >
       <div className="min-w-full  p-2 flex items-center">
         <SongImage imagePath={imagePath} />
         <SongName songName={songName} songLength={songLength} />
@@ -77,7 +91,8 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
           isPlaying ? (
             <div
               className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setIsPlaying(false);
               }}
             >
@@ -86,7 +101,8 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
           ) : (
             <div
               className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setIsPlaying(true);
               }}
             >
@@ -96,7 +112,8 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
         ) : (
           <div
             className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setIsPlaying(true);
               singleSongPlayButtonHandler(libraryName, index);
             }}
@@ -107,7 +124,8 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
         {likedSongs.some((id) => id === songId) ? (
           <div
             className="text-red-500 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               removeFromLikedSongs(songId);
             }}
           >
@@ -116,7 +134,8 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
         ) : (
           <div
             className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               addToLikedSongs(songId);
             }}
           >
@@ -132,7 +151,8 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
         isPlaying ? (
           <div
             className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setIsPlaying(false);
             }}
           >
@@ -141,7 +161,8 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
         ) : (
           <div
             className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setIsPlaying(true);
             }}
           >
@@ -151,7 +172,8 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
       ) : (
         <div
           className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             setIsPlaying(true);
             singleSongPlayButtonHandler(libraryName, index);
           }}
@@ -162,7 +184,8 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
       {likedSongs.some((id) => id === songId) ? (
         <div
           className="text-red-500 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             removeFromLikedSongs(songId);
           }}
         >
@@ -171,7 +194,8 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
       ) : (
         <div
           className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             addToLikedSongs(songId);
           }}
         >

@@ -82,7 +82,7 @@ const SongDescriptionMobile = () => {
             <div className="w-full min-h-full px-7 py-16 flex flex-col justify-start items-start">
               {/* Title and Artist */}
               <div>
-                <h1 className="text-white-text-main text-4xl">
+                <h1 className="bg-gradient-to-r from-pink-primary to-purple-400 bg-clip-text text-transparent text-4xl">
                   {currentSong.title}
                 </h1>
                 <h1 className=" mt-3 text-gray-400 text-sm font-normal">

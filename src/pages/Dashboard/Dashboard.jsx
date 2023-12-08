@@ -3,7 +3,7 @@ import GreetUser from "../../Components/Dashboard/GreetUser";
 import ForYou from "../../Components/Dashboard/ForYou";
 import ArtistsPanel from "../../Components/Dashboard/ArtistsPanel";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
-import Trending from "../../Components/Dashboard/Trending";
+// import Trending from "../../Components/Dashboard/Trending";
 
 const Dashboard = () => {
   const { setSelectedMenubarItemId } = useApplicationManager();

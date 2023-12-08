@@ -11,7 +11,7 @@ const Menubar = () => {
     useApplicationManager();
 
   return (
-    <div className="menubar-scrollbar text-white-text-main fixed left-0 top-0 mt-[72px] w-[20%] max-h-screen overflow-y-scroll pb-28 ">
+    <div className="menubar-scrollbar text-white-text-main fixed left-0 top-0 mt-[72px] w-[25%] lg:w-[20%] max-h-screen overflow-y-scroll pb-28 ">
       <div className="w-full min-h-screen p-5 ">
         {menubarItems.map((obj, index) => {
           let tailwindClass = "mt-0 border-b-[1px] border-black-ultra-light";

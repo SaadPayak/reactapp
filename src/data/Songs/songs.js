@@ -424,19 +424,177 @@ Baatein dilon ki dekho jo baaki aankhein tujhe samjhaaye
 Tu jaane na, tu jaane na, tu jaane na, tu jaane na...      
       `,
     },
+    {
+      title: "7 Rings",
+      src: "https://firebasestorage.googleapis.com/v0/b/realtimedb-b9ceb.appspot.com/o/7-rings-ariana-grande.mp3?alt=media&token=54e4080e-1670-4735-b224-9ec90dce0a6b",
+      author: "Ariana Grande",
+      coverImage: "/assets/images/songs/7-rings.jpeg",
+      songId: "d46e6bbf097f4644a2faf1590c5e0ef5",
+      duration: "2m 58s",
+      releaseDate: "18 Jan, 2019",
+      plays: "2,133,737,372",
+      lyrics: `
+Yeah, breakfast at Tiffany's and bottles of bubbles
+Girls with tattoos who like getting in trouble
+Lashes and diamonds, ATM machines
+Buy myself all of my favorite things (yeah)
+
+Been through some bad shit, I should be a sad bitch
+Who woulda thought it'd turn me to a savage?
+Rather be tied up with cuffs and not strings
+Write my own checks like I write what I sing, yeah (yeah)
+
+My wrist, stop watchin', my neck is flossin'
+Make big deposits, my gloss is poppin'
+You like my hair? Gee, thanks, just bought it
+I see it, I like it, I want it, I got it (yeah)
+
+I want it, I got it, I want it, I got it
+I want it, I got it, I want it, I got it
+You like my hair? Gee, thanks, just bought it
+I see it, I like it, I want it, I got it (yeah)
+
+Wearing a ring, but ain't gon' be no Mrs
+Bought matching diamonds for six of my bitches
+I'd rather spoil all my friends with my riches
+Think retail therapy my new addiction
+
+Whoever said money can't solve your problems
+Must not have had enough money to solve 'em
+They say: Which one? I say: Nah, I want all of 'em
+Happiness is the same price as red-bottoms
+
+My smile is beamin', my skin is gleamin'
+The way it shine, I know you've seen it (you've seen it)
+I bought a crib just for the closet (just for, closet)
+Both his and hers, I want it, I got it, yeah
+
+I want it, I got it, I want it, I got it
+I want it, I got it, I want it, I got it (baby)
+You like my hair? Gee, thanks, just bought it (oh yeah)
+I see it, I like it, I want it, I got it (yeah)
+
+I got my receipts, be lookin' like phone numbers
+If it ain't money, then wrong number
+Black card is my business card
+The way it be settin' the tone for me
+I don't mean to brag, but I be like: Put it in the bag, yeah
+When you see them racks, they stacked up like my ass, yeah
+Shoot, go from the store to the booth
+Make it all back in one loop, give me the loot
+Never mind, I got the juice
+Nothing but net when we shoot
+Look at my neck, look at my jet
+Ain't got enough money to pay me respect
+Ain't no budget when I'm on the set
+If I like it, then that's what I get, yeah
+
+I want it, I got it, I want it, I got it (yeah)
+I want it, I got it, I want it, I got it (oh yeah, yeah)
+You like my hair? Gee, thanks, just bought it
+I see it, I like it, I want it, I got it (I want it) (yeah)`,
+    },
+    {
+      title: "No Tears Left To Cry",
+      src: "https://firebasestorage.googleapis.com/v0/b/realtimedb-b9ceb.appspot.com/o/no-tears-left-to-cry-ariana-grande.mp3?alt=media&token=455cc74b-c7d0-46f3-9474-35e1303a7b51",
+      author: "Ariana Grande",
+      coverImage: "/assets/images/songs/no-tears-left-to-cry.jpg",
+      songId: "2ee2ace6515b49f5bb5180bfaa05b120",
+      duration: "3m 25s",
+      releaseDate: "20 Apr, 2018",
+      plays: "1,270,520,265",
+      lyrics: `
+Right now, I'm in a state of mind
+I wanna be in, like, all the time
+Ain't got no tears left to cry
+So I'm pickin' it up, I'm pickin' it up
+I'm lovin', I'm livin', I'm pickin' it up
+I'm pickin' it up, pickin' it up
+I'm lovin', I'm livin', I'm pickin' it up (oh, yeah)
+
+I'm pickin' it up (yeah), pickin' it up (yeah)
+Lovin', I'm livin', so we turn it up
+Yeah, we turnin' it up
+
+Ain't got no tears in my body
+I ran out, but boy, I like it, I like it (I like it)
+Don't matter how, what, where, who tries it
+We're out here vibin', we vibin' (we vibin')
+
+(Comin' out) even when it's rainin' down
+(Can't stop now) can't stop, so shut your mouth
+(Shut your mouth) and if you don't know, then now you know it, babe
+Know it, babe, yeah
+
+Right now, I'm in a state of mind
+I wanna be in, like, all the time
+Ain't got no tears left to cry
+So I'm pickin' it up, I'm pickin' it up (oh, yeah)
+I'm lovin', I'm livin', I'm pickin' it up
+
+Oh, I just want you to come with me
+We on another mentality
+Ain't got no tears left to cry
+So I'm pickin' it up, pickin' it up (oh, yeah)
+I'm lovin', I'm livin', I'm pickin' it up
+
+Pickin' it up (yeah), pickin' it up
+Lovin', I'm livin', so we turn it up
+Yeah, we turnin' it up
+
+They point out the colors in you, I see 'em too
+And, boy, I like 'em, I like 'em (I like 'em)
+We're way too fly to partake in all this hate
+We out here vibin', we vibin' (we vibin')
+
+(Comin' out) even when it's rainin' down
+(Can't stop now) can't stop, so shut your mouth
+(Shut your mouth) and if you don't know, then now you know it, babe
+Know it, babe, yeah
+
+Right now, I'm in a state of mind
+I wanna be in, like, all the time
+Ain't got no tears left to cry
+So I'm pickin' it up, I'm pickin' it up (oh, yeah)
+I'm lovin', I'm livin', I'm pickin' it up
+
+Oh, I just want you to come with me
+We on another mentality
+Ain't got no tears left to cry (so don't cry)
+So I'm pickin' it up, pickin' it up (oh, yeah)
+I'm lovin', I'm livin', I'm pickin' it up
+
+(Comin' out) even when it's rainin' down
+(Can't stop now) hmm, ooh
+(Shut your mouth) ain't got no tears left to cry
+Oh, yeah, oh, yeah
+
+Oh, I just want you to come with me
+We on another mentality
+Ain't got no tears left to cry (cry)
+So I'm pickin' it up (yeah), I'm pickin' it up (oh, yeah)
+I'm lovin', I'm livin', I'm pickin' it up
+
+Pickin' it up (hmm), pickin' it up (hmm)
+Lovin', I'm livin', so we turn it up (hmm)
+Yeah, we turnin' it up`,
+    },
   ],
   categories: {
     "FOR-YOU": [
-      "4de928e76d6e44c19d634825abb55c2a",
+      // "4de928e76d6e44c19d634825abb55c2a",
       "736c1fc47a7946d1b6516fde8efee85c",
-      "828d47b031a74a398a334c4878ca0dbb",
+      "2f71d5f6b72a4069a082f628d29b9055",
       "4419cb670cf143ca9428b26791231e29",
     ],
     ARTISTS: {
       "TATE-MCRAE": ["4419cb670cf143ca9428b26791231e29"],
       "OLIVIA-RODRIGO": ["66dea241d7554d3b8cc83be1a4553be2"],
       "ATIF-ASLAM": ["4de928e76d6e44c19d634825abb55c2a"],
-      "RAHAT-FATEH-ALI-KHAN": [],
+      "ARIANA-GRANDE": [
+        "d46e6bbf097f4644a2faf1590c5e0ef5",
+        "2ee2ace6515b49f5bb5180bfaa05b120",
+      ],
     },
   },
 };

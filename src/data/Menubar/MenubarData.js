@@ -39,6 +39,12 @@ export const menubarItems = [
       { icon: faRecordVinyl, title: "Podcasts", id: 8, navigationUrl: "" },
     ],
   },
+  {
+    category: "JYSEIFY",
+    items: [
+      { icon: faHeart, title: "Uncover", id: 10, navigationUrl: "/uncover" },
+    ],
+  },
 ];
 
 export const playlists = {

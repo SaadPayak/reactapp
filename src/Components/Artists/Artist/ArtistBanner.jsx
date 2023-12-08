@@ -27,9 +27,9 @@ const ArtistBanner = ({ artist }) => {
           />
         </div>
         {/* Artist Details */}
-        <div className=" w-full lg:h-full lg:w-[70%]">
+        <div className=" w-full lg:h-full lg:w-[70%] ">
           {/* Artist Name */}
-          <h1 className="text-white-text-main m-3 text-5xl lg:text-7xl ">
+          <h1 className="m-3 text-5xl lg:text-7xl bg-gradient-to-r from-pink-primary to-purple-400 bg-clip-text text-transparent">
             {artist.artistName}
           </h1>
           {/* Artist Analytics */}

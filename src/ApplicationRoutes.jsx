@@ -5,6 +5,7 @@ import Top10 from "./pages/Top10/Top10";
 import Artist from "./pages/Artists/Artist/Artist";
 import Artists from "./pages/Artists/Artists";
 import Liked from "./pages/Liked/Liked";
+import Uncover from "./pages/Uncover/Uncover";
 
 const ApplicationRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const ApplicationRoutes = () => {
       <Route path="/artists/:id" element={<Artist />} />
       <Route path="/top-10" element={<Top10 />} />
       <Route path="/liked" element={<Liked />} />
+      <Route path="/uncover" element={<Uncover />} />
     </Routes>
   );
 };
