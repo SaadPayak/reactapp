@@ -11,7 +11,7 @@ import { useApplicationManager } from "../../contexts/ApplicationContext";
 const SongDescription = ({ song }) => {
   const { deactivatePopupCenter } = useApplicationManager();
   return (
-    <div className="w-[800px] h-[450px] rounded-lg overflow-hidden flex justify-center items-center bg-black-secondary">
+    <div className="w-full h-full rounded-t-3xl rounded-lg overflow-hidden flex justify-center items-center bg-black-secondary">
       <div className="w-1/2 h-full flex justify-center items-center">
         <div className="w-[350px] h-[350px]  relative rounded-md overflow-hidden">
           <img

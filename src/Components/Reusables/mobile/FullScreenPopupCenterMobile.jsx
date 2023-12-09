@@ -31,7 +31,7 @@ const FullScreenPopupCenterMobile = () => {
   }
   return (
     <motion.div
-      className="w-screen h-screen fixed top-0 left-0 bg-[#0a0a0a4f] backdrop-blur-md z-[1000000] flex justify-center items-center overflow-y-scroll"
+      className="w-screen h-screen fixed top-0 left-0 bg-[#0a0a0a4f] backdrop-blur-md z-[1000000] flex justify-center items-start overflow-y-scroll"
       onClick={deactivatePopupCenter}
       initial={{ backdropFilter: "blur(0px)" }}
       animate={{ backdropFilter: "blur(10px)", transition: { duration: 0.05 } }}
@@ -41,7 +41,7 @@ const FullScreenPopupCenterMobile = () => {
         animate="visible"
         exit="hidden"
         variants={childComponentVariants}
-        className="absolute z-[150]"
+        className="absolute z-[150] h-full w-full"
         onClick={(e) => e.stopPropagation()}
       >
         {fullScreenPopCenter.component}

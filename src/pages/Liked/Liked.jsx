@@ -28,6 +28,7 @@ const Liked = () => {
         {liked.map((track, index) => {
           return (
             <SongOption
+              song={track}
               imagePath={track.coverImage}
               songName={track.title}
               songLength={track.duration}
