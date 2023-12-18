@@ -16,6 +16,8 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+
   const [likedSongs, setLikedSongs] = useState([
     "736c1fc47a7946d1b6516fde8efee85c",
     "4419cb670cf143ca9428b26791231e29",
@@ -35,6 +37,8 @@ export const UserProvider = ({ children }) => {
     setLikedSongs(likedSongs.filter((songId) => songId !== id));
   }
   const value = {
+    user,
+    setUser,
     likedSongs,
     setLikedSongs,
     addToLikedSongs,

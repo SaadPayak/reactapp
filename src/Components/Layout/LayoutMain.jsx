@@ -8,8 +8,7 @@ import FullScreenPopupCenter from "../Reusables/FullScreenPopupCenter";
 import { Toaster } from "react-hot-toast";
 import FullScreenPopupCenterMobile from "../Reusables/mobile/FullScreenPopupCenterMobile";
 import NavbarVisibleFullScreenPopup from "../Reusables/NavbarVisibleFullScreenPopup";
-import Player2 from "../Player/Player";
-// import PlayerMobile from "../Player/mobile/PlayerMobile";
+import Player from "../Player/Player";
 
 const LayoutMain = (props) => {
   // When Menu opened in mobile and then if we switch to desktop, then going back to mobile still shows that menu open. RESET MOBILE STATES
@@ -63,7 +62,7 @@ const ContentHolder = ({ children }) => {
           </div>
         </>
       )}
-      <Player2 isSmallScreen={isSmallScreen} />
+      <Player isSmallScreen={isSmallScreen} />
       {/* <Player isSmallScreen={isSmallScreen} /> */}
     </div>
   );
