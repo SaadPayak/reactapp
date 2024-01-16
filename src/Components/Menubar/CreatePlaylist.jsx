@@ -19,7 +19,7 @@ const CreatePlaylist = () => {
 
 const PlaylistInfo = () => {
   const [playlistName, setPlaylistName] = useState("");
-  const [playlistColor, setplaylistColor] = useState("fuchsia-400");
+  const [playlistColor, setplaylistColor] = useState("#f83b43");
   const { deactivatePopupCenter } = useApplicationManager();
   const { addToPlaylist } = usePlaylists();
   const playlistColors = [

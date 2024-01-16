@@ -63,6 +63,7 @@ const SignIn = ({
       }
     } catch (error) {
       const errorCode = error.code;
+      console.log(error);
       if (String(errorCode) === "auth/invalid-credential") {
         toast.error("Invalid email or password");
       } else {

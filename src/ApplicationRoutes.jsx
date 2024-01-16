@@ -10,6 +10,7 @@ import Authentication from "./pages/Authentication/Authentication";
 import { useUser } from "./contexts/UserContext";
 import LayoutMain from "./Components/Layout/LayoutMain";
 import { Toaster } from "react-hot-toast";
+import Account from "./pages/Account/Account";
 
 const RoutesWrapper = () => {
   const { user } = useUser();
@@ -34,6 +35,7 @@ const RoutesWrapper = () => {
             <Route path="/top-10" element={<Top10 />} />
             <Route path="/liked" element={<Liked />} />
             <Route path="/uncover" element={<Uncover />} />
+            <Route path="/account" element={<Account />} />
 
             <Route path="/auth" element={<Navigate to="/" replace />} />
           </>
@@ -50,6 +52,7 @@ const RoutesWrapper = () => {
             <Route path="/top-10" element={<Navigate to="/auth" replace />} />
             <Route path="/liked" element={<Navigate to="/auth" replace />} />
             <Route path="/uncover" element={<Navigate to="/auth" replace />} />
+            <Route path="/account" element={<Navigate to="/auth" replace />} />
           </>
         )}
       </Routes>

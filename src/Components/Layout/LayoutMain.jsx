@@ -48,7 +48,6 @@ const ContentHolder = ({ children }) => {
       {isSmallScreen ? (
         <>
           {isMobileMenuActive && <MenubarMobile />}
-          {/* <FullScreenPopupCenterMobile /> */}
           <div className="w-[100%] min-h-full absolute right-0 p-5 pb-32">
             {children}
           </div>
@@ -56,14 +55,12 @@ const ContentHolder = ({ children }) => {
       ) : (
         <>
           <Menubar />
-          {/* <FullScreenPopupCenter /> */}
           <div className="w-[75%] lg:w-[80%] min-h-full absolute right-0 p-5 px-10 pb-32">
             {children}
           </div>
         </>
       )}
       <Player isSmallScreen={isSmallScreen} />
-      {/* <Player isSmallScreen={isSmallScreen} /> */}
     </div>
   );
 };

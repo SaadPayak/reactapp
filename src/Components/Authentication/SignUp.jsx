@@ -16,6 +16,7 @@ const SignUp = ({
   const { setUser } = useUser();
 
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const parentVariants = {
     hidden: { opacity: 0, y: -50 },
@@ -30,16 +31,12 @@ const SignUp = ({
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const handleSignUp = async () => {
-    if (!email) {
-      toast.error("Email is required");
+    if (!email || !password || !name) {
+      toast.error("All fields required");
       return;
     }
     if (!emailRegex.test(email)) {
       toast.error("Email is not valid ");
-      return;
-    }
-    if (!password) {
-      toast.error("Password is required");
       return;
     }
     if (password.length < 6) {
@@ -48,24 +45,28 @@ const SignUp = ({
     }
     try {
       setAuthRequestSent(true);
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      const user = userCredential.user;
+      await createUserWithEmailAndPassword(auth, email, password);
 
       const usersCollection = collection(firestore, "Users");
       await addDoc(usersCollection, {
-        username: "user",
+        name: name,
         email: email,
-        likedSongs: {},
+        likedSongs: {
+          likedSongIds: [],
+        },
         playlists: {},
         history: {},
       });
 
-      setUser(user);
+      setUser({
+        name: name,
+        email: email,
+        likedSongs: {
+          likedSongIds: [],
+        },
+        playlists: {},
+        history: {},
+      });
       setAuthRequestSent(false);
     } catch (error) {
       if (String(error).includes("auth/email-already-in-use")) {
@@ -94,6 +95,14 @@ const SignUp = ({
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <div className="w-full flex flex-col justify-center items-center">
+          <div className=" w-full  mb-4">
+            <input
+              className="w-full h-10 bg-transparent border-b-[1px] outline-none text-gray-400 px-2 text-base border-[#181818] placeholder:text-[#434343]"
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
           <div className=" w-full  mb-4">
             <input
               className="w-full h-10 bg-transparent border-b-[1px] outline-none text-gray-400 px-2 text-base border-[#181818] placeholder:text-[#434343]"

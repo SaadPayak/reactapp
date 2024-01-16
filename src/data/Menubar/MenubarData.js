@@ -8,6 +8,7 @@ import {
   faRecordVinyl,
   faSquare,
   faUser,
+  faFolderTree,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const menubarItems = [
@@ -42,7 +43,12 @@ export const menubarItems = [
   {
     category: "JYSEIFY",
     items: [
-      { icon: faHeart, title: "Uncover", id: 10, navigationUrl: "/uncover" },
+      {
+        icon: faFolderTree,
+        title: "Uncover",
+        id: 9,
+        navigationUrl: "/uncover",
+      },
     ],
   },
 ];
@@ -54,10 +60,10 @@ export const playlists = {
       icon: faSquare,
       iconColor: "text-purple-400",
       title: "Bolywood Hindi",
-      id: 9,
+      id: 10,
     },
-    { icon: faSquare, iconColor: "text-green-400", title: "Rap", id: 10 },
-    { icon: faSquare, iconColor: "text-blue-400", title: "Meera♥️", id: 11 },
-    { icon: faSquare, iconColor: "text-yellow-400", title: "Sad", id: 12 },
+    { icon: faSquare, iconColor: "text-green-400", title: "Rap", id: 11 },
+    { icon: faSquare, iconColor: "text-blue-400", title: "Meera♥️", id: 12 },
+    { icon: faSquare, iconColor: "text-yellow-400", title: "Sad", id: 13 },
   ],
 };

@@ -1,10 +1,22 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { allSongs } from "../data/Songs/songs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
-
+import app from "../backend/Firebase/firebase";
+import {
+  arrayRemove,
+  arrayUnion,
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 const UserContext = createContext();
 
 export const useUser = () => {
@@ -17,24 +29,99 @@ export const useUser = () => {
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const firestore = getFirestore(app);
 
-  const [likedSongs, setLikedSongs] = useState([
-    "736c1fc47a7946d1b6516fde8efee85c",
-    "4419cb670cf143ca9428b26791231e29",
-    "f764751c0ecd452ca09b45aa71369654",
-  ]);
+  const [likedSongs, setLikedSongs] = useState([]);
 
-  function addToLikedSongs(id) {
+  useEffect(() => {
+    if (user) {
+      setLikedSongs(user.likedSongs.likedSongIds);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    const auth = getAuth(app);
+    const firestore = getFirestore(app);
+    const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
+      if (authUser) {
+        if (!user) {
+          const usersCollectionRef = collection(firestore, "Users");
+          const q = query(
+            usersCollectionRef,
+            where("email", "==", auth.currentUser.email)
+          );
+          const userQuerySnapshot = await getDocs(q);
+          if (!userQuerySnapshot.empty) {
+            const userDocSnapshot = userQuerySnapshot.docs[0];
+
+            const userData = {
+              ...userDocSnapshot.data(),
+            };
+            setUser(userData);
+          }
+        }
+      } else {
+        setUser(null);
+      }
+    });
+    return unsubscribe;
+  }, [user]);
+
+  async function addToLikedSongs(id) {
     const addedSong = allSongs.all.find((song) => song.songId === id);
     toast.custom((t) => <CustomToast t={t} addedSong={addedSong} />, {
       id: id,
       duration: 3000,
     });
     setLikedSongs([...likedSongs, id]);
+    try {
+      // Query to find user by email
+      const usersCollectionRef = collection(firestore, "Users");
+      const q = query(usersCollectionRef, where("email", "==", user.email));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        // Assuming only one user per email (you can handle multiple results differently if needed)
+        const userId = querySnapshot.docs[0].id;
+
+        // Reference the user's document by its ID
+        const userDocRef = doc(firestore, "Users", userId);
+        // Update the likedSongIds array using FieldValue.arrayUnion
+        await updateDoc(userDocRef, {
+          "likedSongs.likedSongIds": arrayUnion(id),
+        });
+
+        console.log("Song added to likedSongs array successfully");
+      } else {
+        console.log("User not found");
+      }
+    } catch (error) {
+      console.error("Error adding song to likedSongs array:", error);
+    }
   }
 
-  function removeFromLikedSongs(id) {
+  async function removeFromLikedSongs(id) {
     setLikedSongs(likedSongs.filter((songId) => songId !== id));
+    try {
+      const usersCollectionRef = collection(firestore, "Users");
+      const q = query(usersCollectionRef, where("email", "==", user.email));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        const userId = querySnapshot.docs[0].id;
+
+        const userDocRef = doc(firestore, "Users", userId);
+        await updateDoc(userDocRef, {
+          "likedSongs.likedSongIds": arrayRemove(id),
+        });
+
+        console.log("Song remove to likedSongs array successfully");
+      } else {
+        console.log("User not found");
+      }
+    } catch (error) {
+      console.error("Error removing song to likedSongs array:", error);
+    }
   }
   const value = {
     user,
