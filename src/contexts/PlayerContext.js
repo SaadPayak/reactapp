@@ -34,6 +34,15 @@ export const PlayerProvider = ({ children }) => {
   );
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const playSingle = (id) => {
+    setSongLibrary({
+      category: "SINGLE",
+      library: allSongs.all.find((song) => song.songId === id),
+    });
+    setCurrentTrackIndex(0);
+    setCurrentSong(allSongs.all.find((song) => song.songId === id));
+  };
+
   const singleSongPlayButtonHandler = (library, index) => {
     if (library === songLibrary.category) {
       setCurrentTrackIndex(index);
@@ -104,6 +113,7 @@ export const PlayerProvider = ({ children }) => {
     isPlaying,
     setIsPlaying,
     singleSongPlayButtonHandler,
+    playSingle,
   };
   return (
     <PlayerContext.Provider value={value}>{children}</PlayerContext.Provider>

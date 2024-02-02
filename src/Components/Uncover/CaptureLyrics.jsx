@@ -5,12 +5,14 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { allSongs } from "../../data/Songs/songs";
 
 const CaptureLyrics = ({
   isCapturing,
   foundSong,
   setIsCapturing,
   setFoundSong,
+  setNotFound,
 }) => {
   const [capturedlyrics, setCapturedLyrics] = useState("");
   const [speechRecognizer, setSpeechRecognizer] = useState(null);
@@ -45,12 +47,20 @@ const CaptureLyrics = ({
         setCapturedLyrics(finalTranscripts);
         console.log("Sending Request...");
         try {
-          const result = await axios.post(
-            // "https://krutikmaru.pythonanywhere.com/predict",
-            "http://127.0.0.1:5000/predict",
-            { lyrics: finalTranscripts }
-          );
+          const result = await axios.post("http://127.0.0.1:5000/predict", {
+            lyrics: finalTranscripts,
+          });
           console.log(result);
+          if (result.data.status === "success") {
+            console.log(
+              allSongs.all.find((song) => song.songId === result.data.song_id)
+            );
+            setFoundSong(
+              allSongs.all.find((song) => song.songId === result.data.song_id)
+            );
+          } else if (result.data.status === "failure") {
+            setNotFound(true);
+          }
         } catch (e) {
           console.log(e);
         } finally {

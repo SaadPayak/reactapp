@@ -17,6 +17,7 @@ const Liked = () => {
   const liked = likedSongs.map((id) => {
     return allSongs.all.find((song) => song.songId === id);
   });
+  console.log(liked);
   return (
     <div className="w-full min-h-screen ">
       <h1 className="text-4xl font-semibold text-pink-primary">Liked</h1>
