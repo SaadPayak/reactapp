@@ -14,9 +14,9 @@ const Menubar = () => {
     <div className="menubar-scrollbar text-white-text-main fixed left-0 top-0 mt-[72px] w-[25%] lg:w-[20%] max-h-screen overflow-y-scroll pb-28 ">
       <div className="w-full min-h-screen p-5 ">
         {menubarItems.map((obj, index) => {
-          let tailwindClass = "mt-0 border-b-[1px] border-black-ultra-light";
+          let tailwindClass = "mt-5 border-b-[1px] border-black-ultra-light";
           if (index > 0) {
-            tailwindClass = "mt-5 border-b-[1px] border-black-ultra-light";
+            tailwindClass = "mt-12 border-b-[1px] border-black-ultra-light";
           }
           return (
             <>
@@ -44,7 +44,7 @@ const Menubar = () => {
             </>
           );
         })}
-        <Playlists />
+        {/* <Playlists /> */}
         <Copyright />
       </div>
     </div>

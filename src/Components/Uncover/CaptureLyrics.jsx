@@ -46,6 +46,12 @@ const CaptureLyrics = ({
       speech.onspeechend = async () => {
         setCapturedLyrics(finalTranscripts);
         console.log("Sending Request...");
+        // setFoundSong(
+        //   allSongs.all.find((song) => song.songId === result.data.song_id)
+        //   allSongs.all.find(
+        //     (song) => song.songId === "2ee2ace6515b49f5bb5180bfaa05b120"
+        //   )
+        // );
         try {
           const result = await axios.post("http://127.0.0.1:5000/predict", {
             lyrics: finalTranscripts,
@@ -57,6 +63,9 @@ const CaptureLyrics = ({
             );
             setFoundSong(
               allSongs.all.find((song) => song.songId === result.data.song_id)
+              // allSongs.all.find(
+              //   (song) => song.songId === "2ee2ace6515b49f5bb5180bfaa05b120"
+              // )
             );
           } else if (result.data.status === "failure") {
             setNotFound(true);
