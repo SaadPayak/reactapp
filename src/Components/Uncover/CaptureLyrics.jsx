@@ -53,9 +53,12 @@ const CaptureLyrics = ({
         //   )
         // );
         try {
-          const result = await axios.post("http://127.0.0.1:5000/predict", {
-            lyrics: finalTranscripts,
-          });
+          const result = await axios.post(
+            "http://krutikmaruuu.pythonanywhere.com/predict",
+            {
+              lyrics: finalTranscripts,
+            }
+          );
           console.log(result);
           if (result.data.status === "success") {
             console.log(
