@@ -54,7 +54,7 @@ const CaptureLyrics = ({
         // );
         try {
           const result = await axios.post(
-            "http://krutikmaruuu.pythonanywhere.com/predict",
+            "https://krutikmaruuu.pythonanywhere.com/predict",
             {
               lyrics: finalTranscripts,
             }
