@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useUser } from "../../contexts/UserContext";
 const ForYou = () => {
   const { forYou } = useUser();
+  console.log(forYou);
 
   return (
     <div className="mt-5 min-w-full ">

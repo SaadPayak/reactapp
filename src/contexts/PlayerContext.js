@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { allSongs } from "../data/Songs/songs";
 import { useUser } from "./UserContext";
 const PlayerContext = createContext();
@@ -14,6 +14,8 @@ export const usePlayer = () => {
 };
 
 export const PlayerProvider = ({ children }) => {
+  const { forYou } = useUser();
+  console.log(forYou);
   const { likedSongs, history } = useUser();
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [songInfo, setSongInfo] = useState({
@@ -23,16 +25,18 @@ export const PlayerProvider = ({ children }) => {
   });
   const [songLibrary, setSongLibrary] = useState({
     category: "FOR-YOU",
-    library: allSongs.categories["FOR-YOU"].map((id) => {
-      return allSongs.all.find((song) => song.songId === id);
-    }),
+    library: forYou,
   });
-  const [currentSong, setCurrentSong] = useState(
-    allSongs.categories["FOR-YOU"].map((id) => {
-      return allSongs.all.find((song) => song.songId === id);
-    })[currentTrackIndex]
-  );
+  const [currentSong, setCurrentSong] = useState(forYou[currentTrackIndex]);
   const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    setSongLibrary({
+      category: "FOR-YOU",
+      library: forYou,
+    });
+    setCurrentSong(forYou[0]);
+  }, [forYou]);
 
   const playSingle = (id) => {
     setSongLibrary({
@@ -74,9 +78,7 @@ export const PlayerProvider = ({ children }) => {
     if (library === "FOR-YOU") {
       setSongLibrary({
         category: library,
-        library: allSongs.categories["FOR-YOU"].map((id) => {
-          return allSongs.all.find((song) => song.songId === id);
-        }),
+        library: forYou,
       });
       setCurrentTrackIndex(index);
       setCurrentSong(
