@@ -85,7 +85,7 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
     currentSong,
     isPlaying,
     setIsPlaying,
-    singleSongPlayButtonHandler,
+
     playSingle,
   } = usePlayer();
   const { likedSongs, addToLikedSongs, removeFromLikedSongs, updateHistory } =
