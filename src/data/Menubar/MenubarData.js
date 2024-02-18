@@ -45,6 +45,12 @@ export const menubarItems = [
         id: 9,
         navigationUrl: "/uncover",
       },
+      {
+        icon: faUser,
+        title: "Account",
+        id: 10,
+        navigationUrl: "/account",
+      },
     ],
   },
 ];

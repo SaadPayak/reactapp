@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useUser } from "../../contexts/UserContext";
 import app from "../../backend/Firebase/firebase";
 import { getAuth } from "firebase/auth";
@@ -7,6 +7,12 @@ import Details from "../../Components/Account/Details";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
 
 const Account = () => {
+  const { setSelectedMenubarItemId } = useApplicationManager();
+
+  useEffect(() => {
+    setSelectedMenubarItemId(10);
+  }, [setSelectedMenubarItemId]);
+
   const { user } = useUser();
   const { activatePopupCenter } = useApplicationManager();
   return (
