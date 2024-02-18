@@ -11,6 +11,7 @@ import { useUser } from "./contexts/UserContext";
 import LayoutMain from "./Components/Layout/LayoutMain";
 import { Toaster } from "react-hot-toast";
 import Account from "./pages/Account/Account";
+import SongHistory from "./pages/History/SongHistory";
 
 const RoutesWrapper = () => {
   const { user } = useUser();
@@ -36,6 +37,7 @@ const RoutesWrapper = () => {
             <Route path="/liked" element={<Liked />} />
             <Route path="/uncover" element={<Uncover />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/history" element={<SongHistory />} />
 
             <Route path="/auth" element={<Navigate to="/" replace />} />
           </>
@@ -53,6 +55,7 @@ const RoutesWrapper = () => {
             <Route path="/liked" element={<Navigate to="/auth" replace />} />
             <Route path="/uncover" element={<Navigate to="/auth" replace />} />
             <Route path="/account" element={<Navigate to="/auth" replace />} />
+            <Route path="/history" element={<Navigate to="/auth" replace />} />
           </>
         )}
       </Routes>

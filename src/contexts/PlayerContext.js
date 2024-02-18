@@ -14,7 +14,7 @@ export const usePlayer = () => {
 };
 
 export const PlayerProvider = ({ children }) => {
-  const { likedSongs } = useUser();
+  const { likedSongs, history } = useUser();
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
@@ -41,6 +41,7 @@ export const PlayerProvider = ({ children }) => {
     });
     setCurrentTrackIndex(0);
     setCurrentSong(allSongs.all.find((song) => song.songId === id));
+    setIsPlaying(true);
   };
 
   const singleSongPlayButtonHandler = (library, index) => {
@@ -95,6 +96,21 @@ export const PlayerProvider = ({ children }) => {
       setCurrentTrackIndex(index);
       setCurrentSong(
         likedSongs.map((id) => {
+          return allSongs.all.find((song) => song.songId === id);
+        })[index]
+      );
+    }
+
+    if (library === "HISTORY") {
+      setSongLibrary({
+        category: library,
+        library: history.map((id) => {
+          return allSongs.all.find((song) => song.songId === id);
+        }),
+      });
+      setCurrentTrackIndex(index);
+      setCurrentSong(
+        history.map((id) => {
           return allSongs.all.find((song) => song.songId === id);
         })[index]
       );

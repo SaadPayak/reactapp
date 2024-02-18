@@ -1,11 +1,9 @@
 import React from "react";
 import SongOption from "../Reusables/SongOption";
 import { motion } from "framer-motion";
-import { allSongs } from "../../data/Songs/songs";
+import { useUser } from "../../contexts/UserContext";
 const ForYou = () => {
-  const forYou = allSongs.categories["FOR-YOU"].map((id) => {
-    return allSongs.all.find((song) => song.songId === id);
-  });
+  const { forYou } = useUser();
 
   return (
     <div className="mt-5 min-w-full ">

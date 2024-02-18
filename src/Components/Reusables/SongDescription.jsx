@@ -11,13 +11,20 @@ import { useApplicationManager } from "../../contexts/ApplicationContext";
 const SongDescription = ({ song }) => {
   const { deactivatePopupCenter } = useApplicationManager();
   return (
-    <div className="w-full h-full rounded-t-3xl rounded-lg overflow-hidden flex justify-center items-center bg-black-secondary">
-      <div className="w-1/2 h-full flex justify-center items-center">
+    <div className="w-full h-full  overflow-hidden flex justify-center items-center bg-black-secondary">
+      <div className="w-1/2 h-full flex justify-center items-center relative  ">
+        <div className="absolute top-0 left-0 w-full h-full z-10 backdrop-blur-xl bg-[#0a0a0a60]"></div>
+        <div className="absolute top-0 right-0 w-4 h-full z-10 bg-gradient-to-l from-black-secondary to bg-transparent"></div>
+        <img
+          src={song.coverImage}
+          alt={song.title}
+          className="absolute w-full h-full top-0 left-0 object-fit"
+        />
         <div className="w-[350px] h-[350px]  relative rounded-md overflow-hidden">
           <img
             src={song.coverImage}
             alt={song.title}
-            className="absolute w-full h-full top-0 left-0 object-fit"
+            className="absolute w-full h-full top-0 left-0 object-fit z-20"
           />
         </div>
       </div>

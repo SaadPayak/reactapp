@@ -41,8 +41,7 @@ const FullScreenPopupCenter = () => {
         animate="visible"
         exit="hidden"
         variants={childComponentVariants}
-        className="absolute z-[150] w-full h-[95%]"
-        onClick={(e) => e.stopPropagation()}
+        className="absolute z-[150] w-full h-full flex justify-center items-center"
       >
         {fullScreenPopCenter.component}
       </motion.div>

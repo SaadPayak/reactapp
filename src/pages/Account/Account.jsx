@@ -1,80 +1,88 @@
-import React, { useState } from "react";
+import React from "react";
 import { useUser } from "../../contexts/UserContext";
 import app from "../../backend/Firebase/firebase";
 import { getAuth } from "firebase/auth";
-import axios from "axios";
+import Avatar from "../../Components/Account/Avatar";
+import Details from "../../Components/Account/Details";
+import { useApplicationManager } from "../../contexts/ApplicationContext";
 
 const Account = () => {
-  const { setUser } = useUser();
-  const auth = getAuth(app);
+  const { user } = useUser();
+  const { activatePopupCenter } = useApplicationManager();
   return (
-    <div className="w-full min-h-screen ">
-      <button
-        onClick={() => {
-          try {
-            auth.signOut();
-            setUser(null);
-          } catch (e) {
-            console.log(e);
-          }
-        }}
-      >
-        Logout
-      </button>
-      <ImageUpload />
+    <div className=" flex w-full min-h-screen flex-col p-8">
+      {/* Header */}
+      <div>
+        <h1 className="text-2xl text-white font-light">
+          <span className="text-pink-primary font-medium">{user.name}'s</span>{" "}
+          Account
+        </h1>
+      </div>
+      {/* Avatar */}
+      <div className="mt-10">
+        <Avatar
+          image="https://i.ytimg.com/vi/7udSzXYWOd0/hq720.jpg?sqp=-oaymwEYCJUDENAFSFryq4qpAwoIARUAAIhC0AEB&rs=AOn4CLCOC6fH67x3HSQJvqVJMhwrSXURhQ"
+          name={user.name}
+        />
+      </div>
+      {/* Details  */}
+      <div className="mt-10">
+        <Details
+          name={user.name}
+          email={user.email}
+          joined={new Date(user.joined)}
+        />
+      </div>
+      <div className="mt-10">
+        <button
+          className="bg-red-600 text-white px-4 py-2 rounded-md"
+          onClick={() => {
+            activatePopupCenter(<ConfirmLogout />);
+          }}
+        >
+          Logout
+        </button>
+      </div>
     </div>
   );
 };
 
 export default Account;
 
-function ImageUpload() {
-  const [image, setImage] = useState(null);
-  const [result, setResult] = useState(null);
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setImage(file);
-  };
-
-  const uploadImage = async () => {
+const ConfirmLogout = () => {
+  const { deactivatePopupCenter } = useApplicationManager();
+  const { setUser } = useUser();
+  const logout = () => {
+    const auth = getAuth(app);
     try {
-      const formData = new FormData();
-      formData.append("image", image);
-
-      const response = await fetch("http://127.0.0.1:5000/process_image", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const result = await response.json();
-      console.log("OK: ", result);
-      setResult(result);
-    } catch (error) {
-      console.error("Error:", error);
+      auth.signOut();
+      setUser(null);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      deactivatePopupCenter();
     }
   };
-
   return (
-    <div className="text-white">
-      <h1>Upload Image</h1>
-      <input
-        type="file"
-        onChange={handleFileChange}
-        accept="image/*"
-        required
-      />
-      <button onClick={uploadImage}>Upload</button>
-
-      {result && (
-        <div>
-          <h2>Result:</h2>
-          <pre>{JSON.stringify(result, null, 2)}</pre>
-        </div>
-      )}
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="w-[350px] h-60 rounded-md bg-[#131313] font-lexend flex flex-col justify-center items-center"
+    >
+      <h1 className="text-white text-xl mb-5">Confirm Logout?</h1>
+      <div>
+        <span
+          onClick={deactivatePopupCenter}
+          className="mr-4 text-[#5c5c5c] text-sm underline cursor-pointer"
+        >
+          Cancle
+        </span>
+        <span
+          onClick={logout}
+          className="py-2 px-4 text-sm bg-red-600 text-white rounded-md cursor-pointer"
+        >
+          Logout
+        </span>
+      </div>
     </div>
   );
-}
+};

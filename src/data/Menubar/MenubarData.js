@@ -1,11 +1,7 @@
 import {
-  faChartSimple,
   faBolt,
-  faSliders,
   faHeart,
-  faClock,
   faHistory,
-  faRecordVinyl,
   faSquare,
   faUser,
   faFolderTree,
@@ -30,7 +26,7 @@ export const menubarItems = [
         navigationUrl: "/artists",
       },
       { icon: faHeart, title: "Liked", id: 5, navigationUrl: "/liked" },
-      { icon: faHistory, title: "History", id: 7, navigationUrl: "" },
+      { icon: faHistory, title: "History", id: 7, navigationUrl: "/history" },
     ],
   },
   // {

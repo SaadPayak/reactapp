@@ -17,6 +17,7 @@ import {
   where,
 } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { formatToDDMonYYYY } from "../utils/functions/formatToDDMonYYYY";
 const UserContext = createContext();
 
 export const useUser = () => {
@@ -32,10 +33,52 @@ export const UserProvider = ({ children }) => {
   const firestore = getFirestore(app);
 
   const [likedSongs, setLikedSongs] = useState([]);
+  const [history, setHistory] = useState([]);
+  const [historyDates, setHistoryDates] = useState([]);
+
+  const [forYou, setForYou] = useState([]);
+  const [recommended, setRecommended] = useState([]);
+
+  useEffect(() => {
+    let forYouArray = [];
+    let generatedIndexes = [];
+    while (forYouArray.length < 3) {
+      const randomIndex = Math.floor(Math.random() * allSongs.all.length);
+      let indexAlreadyGenerated = false;
+      for (let i of generatedIndexes) {
+        if (i === randomIndex) {
+          indexAlreadyGenerated = true;
+        }
+      }
+      if (!indexAlreadyGenerated) {
+        forYouArray.push(allSongs.all[randomIndex]);
+        generatedIndexes.push(randomIndex);
+      }
+    }
+    let recommendedArray = [];
+    generatedIndexes = [];
+    while (recommendedArray.length < 3) {
+      const randomIndex = Math.floor(Math.random() * allSongs.all.length);
+      let indexAlreadyGenerated = false;
+      for (let i of generatedIndexes) {
+        if (i === randomIndex) {
+          indexAlreadyGenerated = true;
+        }
+      }
+      if (!indexAlreadyGenerated) {
+        recommendedArray.push(allSongs.all[randomIndex]);
+        generatedIndexes.push(randomIndex);
+      }
+    }
+    setForYou(forYouArray);
+    setRecommended(recommendedArray);
+  }, []);
 
   useEffect(() => {
     if (user) {
       setLikedSongs(user.likedSongs.likedSongIds);
+      setHistory(user.history.songIds);
+      setHistoryDates(user.history.dates);
     }
   }, [user]);
 
@@ -123,13 +166,81 @@ export const UserProvider = ({ children }) => {
       console.error("Error removing song to likedSongs array:", error);
     }
   }
+
+  async function updateHistory(songId) {
+    console.log([...history, songId]);
+    console.log([...historyDates, formatToDDMonYYYY(new Date())]);
+    setHistory([...history, songId]);
+    setHistoryDates([...historyDates, formatToDDMonYYYY(new Date())]);
+    try {
+      // Query to find user by email
+      const usersCollectionRef = collection(firestore, "Users");
+      const q = query(usersCollectionRef, where("email", "==", user.email));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        // Assuming only one user per email (you can handle multiple results differently if needed)
+        const userId = querySnapshot.docs[0].id;
+
+        // Reference the user's document by its ID
+        const userDocRef = doc(firestore, "Users", userId);
+        // Update the likedSongIds array using FieldValue.arrayUnion
+        await updateDoc(userDocRef, {
+          "history.songIds": arrayUnion(songId),
+        });
+        await updateDoc(userDocRef, {
+          "history.dates": arrayUnion(String(new Date())),
+        });
+
+        console.log("Song added to history array successfully");
+      } else {
+        console.log("User not found");
+      }
+    } catch (error) {
+      console.error("Error adding song to history array:", error);
+    }
+  }
+
+  async function updateName(newName) {
+    try {
+      // Query to find user by email
+      const usersCollectionRef = collection(firestore, "Users");
+      const q = query(usersCollectionRef, where("email", "==", user.email));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        // Assuming only one user per email (you can handle multiple results differently if needed)
+        const userId = querySnapshot.docs[0].id;
+
+        // Reference the user's document by its ID
+        const userDocRef = doc(firestore, "Users", userId);
+        // Update the likedSongIds array using FieldValue.arrayUnion
+        await updateDoc(userDocRef, {
+          name: newName,
+        });
+        console.log("Name updated successfully");
+      } else {
+        console.log("User not found");
+      }
+    } catch (error) {
+      console.error("Error updating Name:", error);
+    }
+  }
   const value = {
     user,
     setUser,
     likedSongs,
     setLikedSongs,
+    history,
+    setHistory,
+    historyDates,
+    setHistoryDates,
     addToLikedSongs,
     removeFromLikedSongs,
+    updateHistory,
+    updateName,
+    forYou,
+    recommended,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

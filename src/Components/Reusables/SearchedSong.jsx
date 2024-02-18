@@ -12,7 +12,7 @@ import { useUser } from "../../contexts/UserContext";
 import SongDescriptionMobile from "./mobile/SongDescriptionMobile";
 import SongDescription from "./SongDescription";
 
-const SongOption = ({
+const SearchedSong = ({
   song,
   imagePath,
   songName,
@@ -25,7 +25,7 @@ const SongOption = ({
   const { isSmallScreen, activatePopupCenter } = useApplicationManager();
   return (
     <div
-      className=" min-w-[200px] mt-4 overflow-hidden border-b-[1px] border-black-secondary hover:bg-black-secondary hover:rounded-md  cursor-pointer transition-all duration-150 ease-in-out"
+      className=" w-full mt-4 overflow-hidden border-b-[1px] border-black-secondary hover:bg-black-secondary hover:rounded-md  cursor-pointer transition-all duration-150 ease-in-out"
       onClick={() => {
         activatePopupCenter(
           isSmallScreen ? (
@@ -36,7 +36,7 @@ const SongOption = ({
         );
       }}
     >
-      <div className="min-w-full  p-2 flex items-center">
+      <div className="min-w-full  p-4 flex items-center">
         <SongImage imagePath={imagePath} />
         <SongName songName={songName} songLength={songLength} />
         <SongUploadDate uploadDate={uploadDate} />
@@ -81,8 +81,13 @@ const SongUploadDate = ({ uploadDate }) => {
 };
 
 const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
-  const { currentSong, isPlaying, setIsPlaying, singleSongPlayButtonHandler } =
-    usePlayer();
+  const {
+    currentSong,
+    isPlaying,
+    setIsPlaying,
+    singleSongPlayButtonHandler,
+    playSingle,
+  } = usePlayer();
   const { likedSongs, addToLikedSongs, removeFromLikedSongs, updateHistory } =
     useUser();
   if (isSmallScreen) {
@@ -118,8 +123,7 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
             className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
             onClick={(e) => {
               e.stopPropagation();
-              setIsPlaying(true);
-              singleSongPlayButtonHandler(libraryName, index);
+              playSingle(songId);
             }}
           >
             <FontAwesomeIcon icon={faPlay} />
@@ -178,8 +182,7 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
           className="text-gray-300 hover:bg-black-ultra-light p-2 px-4 rounded-md transition-all duration-150 ease-in-out"
           onClick={(e) => {
             e.stopPropagation();
-            setIsPlaying(true);
-            singleSongPlayButtonHandler(libraryName, index);
+            playSingle(songId);
             if (currentSong?.songId !== songId) {
               updateHistory(songId);
             }
@@ -212,4 +215,4 @@ const SongActions = ({ isSmallScreen, songId, index, libraryName }) => {
     </div>
   );
 };
-export default SongOption;
+export default SearchedSong;

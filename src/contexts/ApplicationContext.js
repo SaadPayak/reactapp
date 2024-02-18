@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { allSongs } from "../data/Songs/songs";
 
 const ApplicationManagerContext = createContext();
 
@@ -31,6 +32,9 @@ export const ApplicationManagerProvider = ({ children }) => {
   // Global Options
   const [selectedMenubarItemId, setSelectedMenubarItemId] = useState(1);
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 850);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchTypeStarted, setSearchTypeStarted] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
   // When Menu opened in mobile and then if we switch to desktop, then going back to mobile still shows that menu open. RESET MOBILE STATES
   useEffect(() => {
     const handleResize = () => {
@@ -64,6 +68,27 @@ export const ApplicationManagerProvider = ({ children }) => {
     setNavbarVisibleFullScreenPopup({ isActive: false, component: null });
   };
 
+  const handleSearchQueryChange = (query) => {
+    if (query === "") {
+      setSearchQuery("");
+      setSearchTypeStarted(false);
+      return;
+    }
+    if (!searchTypeStarted) setSearchTypeStarted(true);
+    setSearchQuery(query);
+    let results = [];
+    for (let i = 0; i < allSongs.all.length; i++) {
+      if (
+        allSongs.all[i].title.toLocaleLowerCase().includes(query) ||
+        allSongs.all[i].author.toLocaleLowerCase().includes(query) ||
+        allSongs.all[i].lyrics.toLocaleLowerCase().includes(query)
+      ) {
+        results.push(allSongs.all[i]);
+      }
+    }
+    setSearchResults(results);
+  };
+
   const value = {
     fullScreenPopCenter,
     setFullScreenPopCenter,
@@ -83,6 +108,11 @@ export const ApplicationManagerProvider = ({ children }) => {
 
     activateNavbarVisiblePopup,
     deactivateNavbarVisiblePopup,
+
+    searchQuery,
+    searchResults,
+    searchTypeStarted,
+    handleSearchQueryChange,
   };
   return (
     <ApplicationManagerContext.Provider value={value}>

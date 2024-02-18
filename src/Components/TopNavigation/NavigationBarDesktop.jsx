@@ -4,10 +4,11 @@ import React from "react";
 import NavigationLogo from "./NavigationLogo";
 import NavigationAvatar from "./NavigationAvatar";
 import { useApplicationManager } from "../../contexts/ApplicationContext";
+import SearchResults from "../Reusables/SearchResults";
 
 const NavigationBarDesktop = () => {
   // image width
-  const { activateNavbarVisiblePopup, deactivateNavbarVisiblePopup } =
+  const { activateNavbarVisiblePopup, searchQuery, handleSearchQueryChange } =
     useApplicationManager();
 
   return (
@@ -21,13 +22,10 @@ const NavigationBarDesktop = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass} flip="horizontal" />
           </div>
           <input
-            onFocus={() =>
-              activateNavbarVisiblePopup(
-                <h1 className="text-white">Working</h1>
-              )
-            }
-            onBlur={deactivateNavbarVisiblePopup}
-            placeholder="Search by artists, songs or albums"
+            onFocus={() => activateNavbarVisiblePopup(<SearchResults />)}
+            value={searchQuery}
+            onChange={(e) => handleSearchQueryChange(e.target.value)}
+            placeholder="Search by songs, artists or lyrics . . ."
             className="w-full h-full bg-transparent outline-none border-none placeholder:text-black-search-bar-placeholder"
           />
         </div>

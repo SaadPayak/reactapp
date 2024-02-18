@@ -51,21 +51,29 @@ const SignUp = ({
       await addDoc(usersCollection, {
         name: name,
         email: email,
+        joined: String(new Date()),
         likedSongs: {
           likedSongIds: [],
         },
         playlists: {},
-        history: {},
+        history: {
+          songIds: [],
+          dates: [],
+        },
       });
 
       setUser({
         name: name,
         email: email,
+        joined: String(new Date()),
         likedSongs: {
           likedSongIds: [],
         },
         playlists: {},
-        history: {},
+        history: {
+          songIds: [],
+          dates: [],
+        },
       });
       setAuthRequestSent(false);
     } catch (error) {
