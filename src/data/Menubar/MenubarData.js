@@ -37,7 +37,7 @@ export const menubarItems = [
   //   ],
   // },
   {
-    category: "JYSEIFY",
+    category: "TANZILA",
     items: [
       {
         icon: faFolderTree,

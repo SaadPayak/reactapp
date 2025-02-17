@@ -20,7 +20,7 @@ const NavigationBarMobile = () => {
   } = useApplicationManager();
   return (
     <>
-      {/* JYSEIFY Logo ⬇️ */}
+      {/* TANZILA Logo ⬇️ */}
       <NavigationLogo />
       {/* Search bar ⬇️ */}
       {isSearchActivated && (

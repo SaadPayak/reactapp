@@ -19,7 +19,7 @@ module.exports = {
       },
       backgroundImage: {
         test: `url('https://cdn.apollo.audio/one/media/64a4/3c11/c1f5/ac05/9e04/4904/tate-mcrae.jpg')`,
-        test1: `url('https://celebwell.com/wp-content/uploads/sites/2/2023/01/GettyImages-1450181414.jpg?quality=82&strip=1&w=640&crop=0%2C0%2C640px%2C360px')`,
+        test1: `url('https://celebwell.com/wp-content/uploads/sites/2/2025/01/GettyImages-1450181414.jpg?quality=82&strip=1&w=640&crop=0%2C0%2C640px%2C360px')`,
       },
     },
   },

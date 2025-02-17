@@ -13,7 +13,7 @@ const NavigationBarDesktop = () => {
 
   return (
     <>
-      {/* JYSEIFY Logo ⬇️ */}
+      {/* TANZILA Logo ⬇️ */}
       <NavigationLogo />
       {/* Search bar ⬇️ */}
       <div className="min-w-[70%] h-8">
